@@ -1,6 +1,6 @@
-import urlApi from "../../config/config";
+import urlApi from "../../../config/config";
 import axios from "axios";
-import { router } from "../../utilities";
+import { router } from "../../../utilities";
 
 const AdminProductAdd = () => {
     axios.get(urlApi)
@@ -13,19 +13,19 @@ const AdminProductAdd = () => {
                 const image = document.querySelector('.image');
                 const post = {
                     name: title.value,
-                    
+
                     description: desc.value,
                     short_description: desc.value,
 
                     list_price: price.value,
                     original_price: price.value,
-                    images:(image.value === '') ? ['https://picsum.photos/250/370'] : [image.value] 
+                    images: (image.value === '') ? ['https://picsum.photos/250/370'] : [image.value]
                 }
                 axios.post(urlApi, post)
-                .then(()=>{
-                    router.navigate('admin/products/')
-                    alert(`Success Added Product: ${title.value}`)
-                })
+                    .then(() => {
+                        router.navigate('admin/products/')
+                        alert(`Success Added Product: ${title.value}`)
+                    })
             })
         })
     return `

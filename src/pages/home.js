@@ -25,53 +25,9 @@ const HomePage = () => {
         })
       })
 
-      // RENDER HTML HOME
-      const html = data.map((item) => {
-        return `
-            <div class="flex flex-col">
-              <div class="mb-3 flex justify-center">
-                <a href="#/product/${item.id}">
-                  <img title="${item.name}" srcset="${item.images[0]} 2x" alt="Error">
-                </a>
-              </div>
-              <div class="mt-auto">
-                <div class="mb-2">
-                  <img srcset="./src/imgs/tiki-now.png 2x" alt="">
-                </div>
-                <span class="text-[#00AB56] uppercase block mb-2">GIAO SIÊU TỐC 2H</span>
-                <span class="item-title mb-2">${item.name}</span>
-                <div class="flex items-center gap-x-2 my-1">
-                  <ul class="flex items-center">
-                    <li><ion-icon name="star"></ion-icon></li>
-                    <li><ion-icon name="star"></ion-icon></li>
-                    <li><ion-icon name="star"></ion-icon></li>
-                    <li><ion-icon name="star"></ion-icon></li>
-                    <li><ion-icon name="star"></ion-icon></li>
-                  </ul>
-                  <span class="text-[#787878] text-xs block border-l border-[#ccc] pl-2">Đã bán ${item?.quantity_sold?.value ?? 'API null'}</span>
-                </div>
-                <div>
-                  <span class="text-base text-red-600">${item.original_price} ₫</span>
-                  <span class="text-red-600 border border-red-600 rounded px-1 ml-1">-23%</span>
-                </div>
-                <div class="mt-1">
-                  <img srcset="./src/imgs/rehonhoantien.png 2x" alt="">
-                </div>
-              </div>
-            </div>
-        <!-- End Item -->
-      `
-      })
-      const products = document.querySelector('.products')
-      products.innerHTML = html.join('')
-
-      // HANDLE NAV BAR
-      $('.phobien').addEventListener('click', function (e) {
-        axios.get(urlApi)
-          .then(({ data }) => {
-            // console.log(data);
-            const html = data.map((item) => {
-              return `
+      const renderProduct = (data) => {
+        const html = data.map((item) => {
+          return `
               <div class="flex flex-col">
                 <div class="mb-3 flex justify-center">
                   <a href="#/product/${item.id}">
@@ -95,7 +51,7 @@ const HomePage = () => {
                     <span class="text-[#787878] text-xs block border-l border-[#ccc] pl-2">Đã bán ${item?.quantity_sold?.value ?? 'API null'}</span>
                   </div>
                   <div>
-                    <span class="text-base text-red-600">${item.list_price} ₫</span>
+                    <span class="text-base text-red-600">${item.original_price} ₫</span>
                     <span class="text-red-600 border border-red-600 rounded px-1 ml-1">-23%</span>
                   </div>
                   <div class="mt-1">
@@ -105,97 +61,32 @@ const HomePage = () => {
               </div>
           <!-- End Item -->
         `
-            })
-            const products = document.querySelector('.products')
-            products.innerHTML = html.join('')
+        })
+        const products = document.querySelector('.products')
+        products.innerHTML = html.join('')
+      }
+      
+      renderProduct(data)
+
+
+      // HANDLE NAV BAR
+      $('.phobien').addEventListener('click', function (e) {
+        axios.get(urlApi)
+          .then(({ data }) => {
+            renderProduct(data);
           })
 
       })
       $('.thap').addEventListener('click', function (e) {
         sortPrice(data)
           .then((data) => {
-            const html = data.map((item) => {
-              return `
-              <div class="flex flex-col">
-                <div class="mb-3 flex justify-center">
-                  <a href="#/product/${item.id}">
-                    <img title="${item.name}" srcset="${item.images[0]} 2x" alt="Error">
-                  </a>
-                </div>
-                <div class="mt-auto">
-                  <div class="mb-2">
-                    <img srcset="./src/imgs/tiki-now.png 2x" alt="">
-                  </div>
-                  <span class="text-[#00AB56] uppercase block mb-2">GIAO SIÊU TỐC 2H</span>
-                  <span class="item-title mb-2">${item.name}</span>
-                  <div class="flex items-center gap-x-2 my-1">
-                    <ul class="flex items-center">
-                      <li><ion-icon name="star"></ion-icon></li>
-                      <li><ion-icon name="star"></ion-icon></li>
-                      <li><ion-icon name="star"></ion-icon></li>
-                      <li><ion-icon name="star"></ion-icon></li>
-                      <li><ion-icon name="star"></ion-icon></li>
-                    </ul>
-                    <span class="text-[#787878] text-xs block border-l border-[#ccc] pl-2">Đã bán ${item?.quantity_sold?.value ?? 'API null'}</span>
-                  </div>
-                  <div>
-                    <span class="text-base text-red-600">${item.list_price} ₫</span>
-                    <span class="text-red-600 border border-red-600 rounded px-1 ml-1">-23%</span>
-                  </div>
-                  <div class="mt-1">
-                    <img srcset="./src/imgs/rehonhoantien.png 2x" alt="">
-                  </div>
-                </div>
-              </div>
-          <!-- End Item -->
-        `
-            })
-            const products = document.querySelector('.products')
-            products.innerHTML = html.join('')
+            renderProduct(data);
           })
       })
       $('.cao').addEventListener('click', function (e) {
-        console.log('object');
         sortReduce(data)
           .then((data) => {
-            const html = data.map((item) => {
-              return `
-              <div class="flex flex-col">
-                <div class="mb-3 flex justify-center">
-                  <a href="#/product/${item.id}">
-                    <img title="${item.name}" srcset="${item.images[0]} 2x" alt="Error">
-                  </a>
-                </div>
-                <div class="mt-auto">
-                  <div class="mb-2">
-                    <img srcset="./src/imgs/tiki-now.png 2x" alt="">
-                  </div>
-                  <span class="text-[#00AB56] uppercase block mb-2">GIAO SIÊU TỐC 2H</span>
-                  <span class="item-title mb-2">${item.name}</span>
-                  <div class="flex items-center gap-x-2 my-1">
-                    <ul class="flex items-center">
-                      <li><ion-icon name="star"></ion-icon></li>
-                      <li><ion-icon name="star"></ion-icon></li>
-                      <li><ion-icon name="star"></ion-icon></li>
-                      <li><ion-icon name="star"></ion-icon></li>
-                      <li><ion-icon name="star"></ion-icon></li>
-                    </ul>
-                    <span class="text-[#787878] text-xs block border-l border-[#ccc] pl-2">Đã bán ${item?.quantity_sold?.value ?? 'API null'}</span>
-                  </div>
-                  <div>
-                    <span class="text-base text-red-600">${item.list_price} ₫</span>
-                    <span class="text-red-600 border border-red-600 rounded px-1 ml-1">-23%</span>
-                  </div>
-                  <div class="mt-1">
-                    <img srcset="./src/imgs/rehonhoantien.png 2x" alt="">
-                  </div>
-                </div>
-              </div>
-          <!-- End Item -->
-        `
-            })
-            const products = document.querySelector('.products')
-            products.innerHTML = html.join('')
+            renderProduct(data);
           })
       })
 

@@ -1,7 +1,8 @@
 // import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
-import urlApi from '../../config/config';
-import { router, $, $$ } from '../../utilities';
+import urlApi from '../../../config/config';
+import { router, $, $$ } from '../../../utilities';
+import HeaderAdmin from '../../../components/admin/headeradmin';
 
 const AdminProducts = () => {
     (() => {
@@ -24,17 +25,17 @@ const AdminProducts = () => {
                 }).join('')
                 $('tbody').innerHTML = html;
 
-                $$('.delete').forEach((btn)=>{
-                    btn.addEventListener('click', function(){
+                $$('.delete').forEach((btn) => {
+                    btn.addEventListener('click', function () {
                         const rs = confirm('Are you sure you want to delete this item ?');
-                        if(rs){
+                        if (rs) {
                             axios.delete(urlApi + '/' + `${this.dataset.id}`)
-                            .then(()=>{
-                                // router.navigate('/admin/products')
-                                window.location.reload();
-                            })
+                                .then(() => {
+                                    // router.navigate('/admin/products')
+                                    window.location.reload();
+                                })
                         }
-                        
+
                     })
                 })
 
@@ -42,7 +43,10 @@ const AdminProducts = () => {
     })();
 
     return `
-    <a href="admin/product/add">add</a>
+    ${HeaderAdmin()}
+    <a class="border border-[#000] px-10 py-2 rounded inline-block" href="admin/product/add">
+        <button>Add</button>
+    </a>
     <table>
         <thead>
             <tr>

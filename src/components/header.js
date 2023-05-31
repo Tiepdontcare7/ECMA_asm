@@ -32,7 +32,7 @@ const Header = () => {
     <div class="bg-[#1A94FF] max-w-[1440px] mx-auto flex items-center justify-between px-28 py-6 text-white">
       <div>
         <a href="#">
-          <img srcset="../src/imgs/logo.png 2x" alt="">
+          <img srcset="./src/imgs/logo.png 2x" alt="">
         </a>
       </div>
 

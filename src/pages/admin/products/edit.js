@@ -1,13 +1,13 @@
-import urlApi from "../../config/config";
+import urlApi from "../../../config/config";
 import axios from "axios";
-import { router, $, $$ } from "../../utilities";
+import { router, $, $$ } from "../../../utilities";
 
 const AdminProductEdit = ({ id }) => {
     // console.log(id);
     axios.get(urlApi)
         .then(({ data }) => {
             const itemFilter = data.find((item) => item.id === +id)
-            
+
             const html = `
                         <p class="text-center text-lg font-medium">Edit</p>
 
@@ -73,7 +73,7 @@ const AdminProductEdit = ({ id }) => {
 
             `
             $('.editForm').innerHTML = html
-            
+
             $('.editForm').addEventListener('submit', (e) => {
                 e.preventDefault();
                 const title = document.querySelector('.title');
@@ -86,12 +86,12 @@ const AdminProductEdit = ({ id }) => {
                     short_description: desc.value,
                     list_price: price.value,
                     original_price: price.value,
-                    images:(image.value === '') ? ['https://picsum.photos/200/300'] : [image.value] 
+                    images: (image.value === '') ? ['https://picsum.photos/200/300'] : [image.value]
                 }
                 axios.put(urlApi + '/' + itemFilter.id, put)
-                .then(()=>{
-                    router.navigate('admin/products/')
-                })
+                    .then(() => {
+                        router.navigate('admin/products/')
+                    })
             })
         })
     return `
