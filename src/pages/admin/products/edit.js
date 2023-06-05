@@ -14,9 +14,9 @@ const AdminProductEdit = ({ id }) => {
                 setData(itemFilter);
             })
         axios.get(urlCate)
-        .then(({ data }) => {
-            setCate(data);
-        });
+            .then(({ data }) => {
+                setCate(data);
+            });
     }, []);
 
     axios.get(urlApi).then(() => {
@@ -34,10 +34,7 @@ const AdminProductEdit = ({ id }) => {
                 short_description: desc.value,
                 list_price: price.value,
                 original_price: price.value,
-                images:
-                    image.value === ""
-                        ? ["https://picsum.photos/200/300"]
-                        : [image.value],
+                images: image.value === "" ? ["https://picsum.photos/200/300"] : [image.value],
             };
             axios.put(urlApi + "/" + id, put).then(() => {
                 alert(`Edit ${put.name} Success`), router.navigate("admin/products/");
@@ -87,8 +84,8 @@ const AdminProductEdit = ({ id }) => {
                         ${cate.map((i) => {
                             return `
                                 <option value="${i.name}">${i.name}</option>
-                            `;
-                        }).join("")}
+                            `
+                            }).join('')}
                     </select>
                 </div>
             </div>

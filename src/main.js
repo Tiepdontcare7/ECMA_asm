@@ -8,6 +8,8 @@ import AdminProducts from "./pages/admin/products/list";
 import AdminProductAdd from "./pages/admin/products/add";
 import AdminProductEdit from "./pages/admin/products/edit";
 import AdminCategory from "./pages/admin/category/list";
+import AdminCategoryAdd from "./pages/admin/category/add";
+import AdminCategoryEdit from "./pages/admin/category/edit";
 
 
 router.on({
@@ -17,12 +19,13 @@ router.on({
             window.scrollTo(0, 0)
     },
     
-    
     //Admin
     "/admin/products": () => render(AdminProducts,app),
     "/admin/product/add": () => render(AdminProductAdd,app),
     "/admin/product/edit/:id": ({ data }) => render(() => AdminProductEdit(data), app),
     "/admin/category": () => render(AdminCategory, app),
+    "/admin/category/add": () => render(AdminCategoryAdd, app),
+    "/admin/category/edit/:id": ({data}) => render(()=> AdminCategoryEdit(data), app),
     "/not": () => render(NotFoundPage, app)
 }),
 
