@@ -41,7 +41,7 @@ const Footer = () => {
               <h4 class="text-base mb-3 mt-4">Dịch vụ giao hàng</h4>
               <div>
                 <div>
-                  <img srcset="./src/imgs/tiki-now.png 2x" alt="">
+                  <img srcset="/src/imgs/tiki-now.png 2x" alt="">
                 </div>
               </div>
             </div>
@@ -51,47 +51,47 @@ const Footer = () => {
             <h3 class="text-base font-normal mb-3">Phương thức thanh toán</h3>
             <div class="grid grid-cols-5 gap-2">
               <div>
-                <img srcset="./src/imgs/tiki-footer.png 2x" alt="">
+                <img srcset="/src/imgs/tiki-footer.png 2x" alt="">
               </div>
 
               <div>
-                <img srcset="./src/imgs/tiki-footer.png 2x" alt="">
+                <img srcset="/src/imgs/tiki-footer.png 2x" alt="">
               </div>
 
               <div>
-                <img srcset="./src/imgs/tiki-footer.png 2x" alt="">
+                <img srcset="/src/imgs/tiki-footer.png 2x" alt="">
               </div>
 
               <div>
-                <img srcset="./src/imgs/tiki-footer.png 2x" alt="">
+                <img srcset="/src/imgs/tiki-footer.png 2x" alt="">
               </div>
 
               <div>
-                <img srcset="./src/imgs/tiki-footer.png 2x" alt="">
+                <img srcset="/src/imgs/tiki-footer.png 2x" alt="">
               </div>
 
               <div>
-                <img srcset="./src/imgs/tiki-footer.png 2x" alt="">
+                <img srcset="/src/imgs/tiki-footer.png 2x" alt="">
               </div>
 
               <div>
-                <img srcset="./src/imgs/tiki-footer.png 2x" alt="">
+                <img srcset="/src/imgs/tiki-footer.png 2x" alt="">
               </div>
 
               <div>
-                <img srcset="./src/imgs/tiki-footer.png 2x" alt="">
+                <img srcset="/src/imgs/tiki-footer.png 2x" alt="">
               </div>
 
               <div>
-                <img srcset="./src/imgs/tiki-footer.png 2x" alt="">
+                <img srcset="/src/imgs/tiki-footer.png 2x" alt="">
               </div>
 
               <div>
-                <img srcset="./src/imgs/tiki-footer.png 2x" alt="">
+                <img srcset="/src/imgs/tiki-footer.png 2x" alt="">
               </div>
 
               <div>
-                <img srcset="./src/imgs/tiki-footer.png 2x" alt="">
+                <img srcset="/src/imgs/tiki-footer.png 2x" alt="">
               </div>
             </div>
 
@@ -99,7 +99,7 @@ const Footer = () => {
               <h4 class="text-base mb-3 mt-4">Dịch vụ giao hàng</h4>
               <div>
                 <div>
-                  <img srcset="./src/imgs/tiki-now.png 2x" alt="">
+                  <img srcset="/src/imgs/tiki-now.png 2x" alt="">
                 </div>
               </div>
             </div>
@@ -110,15 +110,15 @@ const Footer = () => {
 
             <div class="grid grid-cols-5 gap-2">
               <div>
-                <img srcset="./src/imgs/fb.png 2x" alt="">
+                <img srcset="/src/imgs/fb.png 2x" alt="">
               </div>
 
               <div>
-                <img srcset="./src/imgs/fb.png 2x" alt="">
+                <img srcset="/src/imgs/fb.png 2x" alt="">
               </div>
 
               <div>
-                <img srcset="./src/imgs/fb.png 2x" alt="">
+                <img srcset="/src/imgs/fb.png 2x" alt="">
               </div>
             </div>
 
@@ -126,14 +126,14 @@ const Footer = () => {
               <h4 class="text-base mb-3 mt-4">Hướng dẫn trả góp</h4>
               <div class="flex gap-x-2">
                 <div>
-                  <img srcset="./src/imgs/qr.png 2x" alt="">
+                  <img srcset="/src/imgs/qr.png 2x" alt="">
                 </div>
                 <div class="flex flex-col gap-y-2">
                   <div>
-                    <img srcset="./src/imgs/appstore.png 2x" alt="">
+                    <img srcset="/src/imgs/appstore.png 2x" alt="">
                   </div>
                   <div>
-                    <img srcset="./src/imgs/gg.png 2x" alt="">
+                    <img srcset="/src/imgs/gg.png 2x" alt="">
                   </div>
                 </div>
               </div>

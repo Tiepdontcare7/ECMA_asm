@@ -1,8 +1,8 @@
-import { render, router } from "../src/utilities/index";
+import { render, router } from "../src/lib/index";
 
-import HomePage from "../src/pages/home";
-import ProductDetail from "./pages/productDetail";
-import NotFoundPage from "./pages/notfoundpage";
+import HomePage from "./pages/client/home";
+import ProductDetail from "./pages/client/productDetail";
+import NotFoundPage from "./components/404";
 
 import AdminProducts from "./pages/admin/products/list";
 import AdminProductAdd from "./pages/admin/products/add";
@@ -11,24 +11,24 @@ import AdminCategory from "./pages/admin/category/list";
 
 
 router.on({
-    "/": () => render(HomePage),
+    "/": () => render(HomePage, app),
     "/product/:id": ({ data }) => {
-        render(() => ProductDetail(data)),
+        render(() => ProductDetail(data), app),
             window.scrollTo(0, 0)
     },
-    "/admin/category": () => render(AdminCategory),
-
-
+    
+    
     //Admin
-    "/admin/products": () => render(AdminProducts),
-    "/admin/product/add": () => render(AdminProductAdd),
-    "/admin/product/edit/:id": ({ data }) => render(() => AdminProductEdit(data)),
-    "/not": () => render(NotFoundPage)
+    "/admin/products": () => render(AdminProducts,app),
+    "/admin/product/add": () => render(AdminProductAdd,app),
+    "/admin/product/edit/:id": ({ data }) => render(() => AdminProductEdit(data), app),
+    "/admin/category": () => render(AdminCategory, app),
+    "/not": () => render(NotFoundPage, app)
 }),
 
-    router.notFound(() => {
-        render(NotFoundPage);
-    })
+router.notFound(() => {
+    render(NotFoundPage, app);
+})
 
 router.resolve();
 

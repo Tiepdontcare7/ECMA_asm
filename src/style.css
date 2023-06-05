@@ -51,7 +51,8 @@ html {
     font-weight: 400;
     padding: 10px 15px;
 }
-.striped-table td{
+
+.striped-table td {
     padding: 10px 15px;
 }
 
@@ -59,18 +60,22 @@ html {
     margin-top: 20px;
 } */
 
-table td, th{
+table td,
+th {
     border: 1px solid #4F4F4F;
     padding: 20px;
 }
-table{
+
+table {
     width: 100%;
 }
 
-.search-nav{
+.search-nav {
     display: none;
     z-index: 999;
 }
+
 /* .input-nav:focus ~ .search-nav {
     display: block; 
 } */
+

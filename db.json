@@ -1,4 +1,22 @@
 {
+  "category": [
+    {
+      "id": 1,
+      "name": "Văn hóa xã hội"
+    },
+    {
+      "id": 2,
+      "name": "Truyện, tiểu thuyết"
+    },
+    {
+      "id": 3,
+      "name": "Kinh doanh"
+    },
+    {
+      "id": 4,
+      "name": "Trinh Thám"
+    }
+  ],
   "data": [
     {
       "id": 1,
@@ -153,7 +171,7 @@
       "id": 10
     },
     {
-      "name": "update 123",
+      "name": "update",
       "description": "update",
       "short_description": "update",
       "list_price": "1111",
@@ -164,15 +182,73 @@
       "id": 11
     },
     {
-      "name": "test",
-      "description": "hi",
-      "short_description": "hi",
-      "list_price": "123",
-      "original_price": "123",
+      "name": "1 upup",
+      "description": "2",
+      "short_description": "2",
+      "list_price": "3",
+      "original_price": "3",
       "images": [
         "https://picsum.photos/250/370"
       ],
       "id": 13
+    },
+    {
+      "name": "1",
+      "category": "Trinh Thám",
+      "description": "1",
+      "short_description": "1",
+      "list_price": "1",
+      "original_price": "1",
+      "images": [
+        "https://picsum.photos/250/370"
+      ],
+      "id": 14
+    },
+    {
+      "name": "vvvvvvvvvvvvvvv",
+      "category": "Văn hóa xã hội",
+      "description": "vvvvvvvvvvvv",
+      "short_description": "vvvvvvvvvvvv",
+      "list_price": "3333333333333",
+      "original_price": "3333333333333",
+      "images": [
+        "https://picsum.photos/250/370"
+      ],
+      "id": 15
+    },
+    {
+      "name": "gggggggggggggggggggg",
+      "description": "ggggggggggggggg",
+      "short_description": "ggggggggggggggg",
+      "list_price": "666",
+      "original_price": "666",
+      "images": [
+        "https://www.imgworlds.com/wp-content/uploads/2015/11/hero2.jpg"
+      ],
+      "id": 17
+    },
+    {
+      "name": "gggggggggggggggg",
+      "description": "ggggggggggggggggg",
+      "short_description": "ggggggggggggggggg",
+      "list_price": "555",
+      "original_price": "555",
+      "images": [
+        "https://salt.tikicdn.com/ts/product/82/82/80/c542073200c6e95d3e89840b2f41ce2e.jpg"
+      ],
+      "id": 18
+    },
+    {
+      "name": "hhhhhhhhhhhhhhhhhhhhhhhhhh",
+      "description": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+      "category": "Kinh doanh",
+      "short_description": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+      "list_price": "7",
+      "original_price": "7",
+      "images": [
+        "https://picsum.photos/250/350"
+      ],
+      "id": 19
     }
   ]
 }

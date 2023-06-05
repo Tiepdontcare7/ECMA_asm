@@ -1,4 +1,3 @@
-
 const HeaderAdmin = () => {
   return `
   <!--
@@ -89,8 +88,8 @@ const HeaderAdmin = () => {
             aria-label="Site Nav"
             class="hidden items-center justify-center gap-8 text-sm font-medium lg:flex lg:w-0 lg:flex-1"
             >
-            <a class="text-gray-900" href="admin/products">Products</a>
-            <a class="text-gray-900" href="admin/category">Category</a>
+            <a class="text-gray-900" href="/admin/products">Products</a>
+            <a class="text-gray-900" href="/admin/category">Category</a>
             <a class="text-gray-900" href="">Projects</a>
             <a class="text-gray-900" href="">Contact</a>
             </nav>
@@ -123,7 +122,7 @@ const HeaderAdmin = () => {
             </nav>
         </div>
         </header>
-  `
-}
+  `;
+};
 
-export default HeaderAdmin
+export default HeaderAdmin;

@@ -1,14 +1,15 @@
 import axios from "axios";
-import urlApi from "../config/config";
+import urlApi from "../../config/config";
+import { useEffect } from "../../lib";
 
 const Header = () => {
   axios.get(urlApi)
     .then(({ data }) => {
       const inputNav = document.querySelector('.input-nav');
       const searchNav = document.querySelector('.search-nav');
-      
+
       inputNav.addEventListener('keyup', function (e) {
-          // console.log(this.value);
+        // console.log(this.value);
         const dataFilter = data.filter((item) => item.name.toLowerCase().trim().includes(this.value.toLowerCase().trim()));
         const html = dataFilter.map((item) => {
           return `
@@ -19,20 +20,21 @@ const Header = () => {
         }).join('')
         searchNav.querySelector('ul').innerHTML = html;
 
-        if(e.key === "Backspace" && this.value === ''){
+        if (e.key === "Backspace" && this.value === '') {
           searchNav.style.display = 'none';
-        }else{
+        } else {
           searchNav.style.display = 'block';
         }
-      })      
+      })
     })
+
 
   return `
   <section class="header">
     <div class="bg-[#1A94FF] max-w-[1440px] mx-auto flex items-center justify-between px-28 py-6 text-white">
       <div>
         <a href="#">
-          <img srcset="./src/imgs/logo.png 2x" alt="">
+          <img srcset="/src/imgs/logo.png 2x" alt="">
         </a>
       </div>
 
@@ -43,7 +45,7 @@ const Header = () => {
             <div class="search-nav overflow-y-auto absolute w-full border h-fit max-h-[500px] bg-white text-black rounded">
               <ul>
                 
-                
+            
               </ul>
             </div>
           </div>
