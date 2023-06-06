@@ -2,6 +2,7 @@ import axios from "axios";
 import { urlCate } from "../../../config/config";
 import { useEffect, useState, router } from "../../../lib";
 import { $ } from "../../../utilities";
+import Swal from "sweetalert2";
 
 const AdminCategoryEdit = ({ id }) => {
     const [data, setData] = useState([])
@@ -16,7 +17,6 @@ const AdminCategoryEdit = ({ id }) => {
     axios.get(urlCate)
         .then(() => {
             const category = $('.category')
-            
             $('.edit').addEventListener('submit', (e) => {
                 e.preventDefault();
                 const put = {
@@ -25,8 +25,14 @@ const AdminCategoryEdit = ({ id }) => {
                 if (put.name) {
                     axios.put(urlCate + '/' + id, put)
                         .then(() => {
-                            alert('Edit successfully')
-                            router.navigate('/admin/category')
+                            // alert('Edit successfully')
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Edit category successfully',
+                                text: 'Something went wrong!',
+                            }).then(() => {
+                                router.navigate('/admin/category')
+                            })
                         })
                 } else {
                     alert('Không được bỏ trống!')

@@ -1,30 +1,31 @@
 import urlApi, { urlCate } from "../../../config/config";
 import axios from "axios";
-import { $$, Validate } from "../../../utilities";
+import { $, $$, Validate } from "../../../utilities";
 import { router, useEffect, useState } from "../../../lib";
+import Swal from "sweetalert2";
 
 const AdminProductAdd = () => {
     const [cate, setCate] = useState([]);
 
     useEffect(() => {
         axios.get(urlCate)
-        .then(({ data }) => {
-            setCate(data);
-        });
+            .then(({ data }) => {
+                setCate(data);
+            });
     }, []);
 
-    axios.get(urlApi).then(() => {
+    useEffect(() => {
         Validate.isText(".title");
         Validate.isText(".description");
         Validate.isImage(".image");
 
-        document.querySelector(".add").addEventListener("submit", (e) => {
+        $(".add").addEventListener("submit", (e) => {
             e.preventDefault();
-            const title = document.querySelector(".title");
-            const desc = document.querySelector(".description");
-            const price = document.querySelector(".price");
-            const image = document.querySelector(".image");
-            const cate = document.querySelector(".category");
+            const title = $(".title");
+            const desc = $(".description");
+            const price = $(".price");
+            const image = $(".image");
+            const cate = $(".category");
             const post = {
                 name: title.value,
                 category: cate.value,
@@ -44,12 +45,24 @@ const AdminProductAdd = () => {
                     check = false;
                 }
             });
-            if (check) {
+            if (check && post.name != '' && post.category != '') {
                 axios.post(urlApi, post).then(() => {
-                    router.navigate("admin/products/");
-                    alert(`Success Added Product: ${title.value}`);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Add products successfully',
+                        text: 'Something went wrong!',
+                    }).then(() => {
+                        router.navigate('/admin/products')
+                    })
                 });
+            } else {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Không được bỏ trống input!',
+                    text: 'Something went wrong!',
+                })
             }
+
         });
     });
 

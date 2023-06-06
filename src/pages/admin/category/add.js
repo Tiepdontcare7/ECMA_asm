@@ -1,29 +1,41 @@
 import axios from "axios";
 import urlApi, { urlCate } from "../../../config/config";
 import { $ } from "../../../utilities";
-import { router } from "../../../lib";
+import { router, useEffect } from "../../../lib";
+import Swal from "sweetalert2";
 
 const AdminCategoryAdd = () => {
-    axios.get(urlApi)
-    .then(()=>{
-        $('.add').addEventListener('submit', (e)=>{
+    useEffect(() => {
+        $('.add').addEventListener('submit', (e) => {
             e.preventDefault();
             const category = $('.category')
-
             const data = {
                 name: category.value
             }
-            if(data.name){
+            if (data.name) {
                 axios.post(urlCate, data)
-                .then(()=>{
-                    alert('Add category successfully!')
-                    router.navigate('/admin/category')
+                    .then(() => {
+                        // alert('Add category successfully!')
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Add category successfully',
+                            text: 'Something went wrong!',
+                        }).then(() => {
+                            router.navigate('/admin/category')
+                        })
+                    })
+            } else {
+                // alert('Không được bỏ trống!')
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Không được bỏ trống!',
+                    text: 'Something went wrong!',
                 })
-            }else{
-                alert('Không được bỏ trống')
             }
         });
+
     })
+
     return `
         <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-lg">

@@ -1,11 +1,5 @@
 const HeaderAdmin = () => {
   return `
-  <!--
-
-        Plugins:
-            - @tailwindcss/forms
-        -->
-
         <header aria-label="Site Header" class="shadow-sm bg-blue-300">
         <div
             class="mx-auto flex h-16 max-w-screen-xl items-center justify-between px-4"
@@ -88,8 +82,8 @@ const HeaderAdmin = () => {
             aria-label="Site Nav"
             class="hidden items-center justify-center gap-8 text-sm font-medium lg:flex lg:w-0 lg:flex-1"
             >
-            <a class="text-gray-900" href="/admin/products">Products</a>
-            <a class="text-gray-900" href="/admin/category">Category</a>
+            <a class="text-gray-900" href="#/admin/products">Products</a>
+            <a class="text-gray-900" href="#/admin/category">Category</a>
             <a class="text-gray-900" href="">Projects</a>
             <a class="text-gray-900" href="">Contact</a>
             </nav>

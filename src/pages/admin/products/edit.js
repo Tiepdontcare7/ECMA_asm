@@ -2,6 +2,7 @@ import urlApi, { urlCate } from "../../../config/config";
 import axios from "axios";
 import { $, $$ } from "../../../utilities";
 import { router, useState, useEffect } from "../../../lib";
+import Swal from "sweetalert2";
 
 const AdminProductEdit = ({ id }) => {
     const [data, setData] = useState([]);
@@ -36,9 +37,20 @@ const AdminProductEdit = ({ id }) => {
                 original_price: price.value,
                 images: image.value === "" ? ["https://picsum.photos/200/300"] : [image.value],
             };
-            axios.put(urlApi + "/" + id, put).then(() => {
-                alert(`Edit ${put.name} Success`), router.navigate("admin/products/");
-            });
+            if(put.name){
+                axios.put(urlApi + "/" + id, put).then(() => {
+                    // alert(`Edit ${put.name} Success`),
+                    //  router.navigate("/admin/products");
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Edit products successfully',
+                        text: 'Something went wrong!',
+                    }).then(() => {
+                        router.navigate('/admin/products')
+                    })
+                });
+
+            }
         });
     });
     return `

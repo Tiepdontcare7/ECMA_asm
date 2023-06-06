@@ -4,6 +4,7 @@ import urlApi from '../../../config/config';
 import { $, $$ } from '../../../utilities';
 import HeaderAdmin from '../../../components/admin/headeradmin';
 import { useState, useEffect, router } from '../../../lib';
+import Swal from 'sweetalert2';
 
 const AdminProducts = () => {
     const [data, setData] = useState([])
@@ -18,13 +19,35 @@ const AdminProducts = () => {
         .then(() => {
             $$('.delete').forEach((btn) => {
                 btn.addEventListener('click', function () {
-                    const rs = confirm('Are you sure you want to delete this item ?');
-                    if (rs) {
-                        axios.delete(urlApi + '/' + `${this.dataset.id}`)
-                            .then(() => {
-                                router.navigate('/admin/products')
-                            })
-                    }
+                    // const rs = confirm('Are you sure you want to delete this item ?');
+                    // if (rs) {
+                    //     axios.delete(urlApi + '/' + `${this.dataset.id}`)
+                    //         .then(() => {
+                    //             router.navigate('#/admin/products')
+                    //         })
+                    // }
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            axios.delete(urlApi + '/' + `${this.dataset.id}`)
+                                .then(() => {
+                                    Swal.fire(
+                                        'Deleted!',
+                                        'Your file has been deleted.',
+                                        'success'
+                                    ).then(() => {
+                                        router.navigate('/admin/products')
+                                    })
+                                })
+                        }
+                    })
                 })
             })
 
@@ -41,6 +64,7 @@ const AdminProducts = () => {
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Title name</th>
+                <th scope="col">Category</th>
                 <th scope="col">Description</th>
                 <th scope="col">Price</th>
                 <th scope="col">Handle</th>
@@ -52,10 +76,11 @@ const AdminProducts = () => {
                     <tr>
                         <th>${item.id}</th>
                         <td>${item.name}</td>
+                        <td>${item.category}</td>
                         <td>${item.short_description || item.description}</td>
                         <td>${item.original_price}</td>
                         <td>
-                            <a href="/admin/product/edit/${item.id}">
+                            <a href="#/admin/product/edit/${item.id}">
                                 <button class="edit">Sửa</button>
                             </a>
                             <button data-id="${item.id}" class="delete">Xóa</button>
