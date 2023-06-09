@@ -45,20 +45,24 @@ function navBar() {
 const Validate = {
    isText: function (selector) {
       const input = document.querySelector(selector);
+      let checked = true;
       input.onblur = () => {
          if (!input.value) {
             input.closest(".form-group").querySelector(".err").innerText =
                "Không được bỏ trống!";
             input.style.border = "1px solid red";
+            checked = false;
          } else if (input.value.length < 7) {
             input.closest(".form-group").querySelector(".err").innerText =
                "Độ dài không ngắn hơn 7 ký tự!";
             input.style.border = "1px solid red";
+            checked = false;
          } else {
             input.closest(".form-group").querySelector(".err").innerText = "";
             input.style.border = "1px solid green";
          }
       };
+      return checked
    },
    isImage: function (selector) {
       const input = document.querySelector(selector);
@@ -83,4 +87,16 @@ const Validate = {
    },
 };
 
-export { render, router, sortPrice, sortReduce, $, $$, navBar, Validate };
+function login(userLocal, user) {
+   return new Promise(function(resolve, reject) {
+      if (userLocal.username == user.username && userLocal.password == user.password) {
+         alert('Đăng nhập thành công!')
+         resolve(user)
+      } else {
+         alert('Sai tài khoản hoặc mật khẩu!')
+         reject()
+      }
+   })
+}
+
+export { render, router, sortPrice, sortReduce, $, $$, navBar, Validate , login};

@@ -20,7 +20,7 @@ const AdminProductEdit = ({ id }) => {
             });
     }, []);
 
-    axios.get(urlApi).then(() => {
+    useEffect(() => {
         $(".editForm").addEventListener("submit", (e) => {
             e.preventDefault();
             const title = document.querySelector(".title");
@@ -92,10 +92,12 @@ const AdminProductEdit = ({ id }) => {
 
                 <div class="relative">
                     <select class="category w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm text-gray-500">
-                        <option value="${data.category}">${data.category}</option>
+                        <option value="${data.category}">${
+                            (cate.find( i => i.id == data.category ))?.name
+                        }</option>
                         ${cate.map((i) => {
                             return `
-                                <option value="${i.name}">${i.name}</option>
+                                <option value="${i.id}">${i.name}</option>
                             `
                             }).join('')}
                     </select>

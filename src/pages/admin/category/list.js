@@ -70,7 +70,7 @@ const AdminCategory = () => {
 
         <tbody class="divide-y divide-gray-200">
           ${data.map(e => {
-    return `
+            return `
                 <tr>
                   <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                     ${e.id}

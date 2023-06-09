@@ -17,14 +17,13 @@ const ProductDetail = ({ id }) => {
         if (dataFilter == undefined) router.navigate('/not')
         setData(dataFilter)
 
-        const cate = data.filter(item => item.category === dataFilter.category && item.id != dataFilter.id)
+        const cate = data.filter(item => item.category === +dataFilter.category && item.id != dataFilter.id)
         setCate(cate)
       })
   }, [])
 
 
-  axios.get(urlApi)
-    .then(() => {
+  useEffect(() => {
       //QUANTITY PRODUCT
       const quantityInput = document.querySelector('.number');
       document.querySelector('.add').addEventListener('click', () => {

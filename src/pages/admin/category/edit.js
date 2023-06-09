@@ -14,8 +14,7 @@ const AdminCategoryEdit = ({ id }) => {
             })
     }, [])
 
-    axios.get(urlCate)
-        .then(() => {
+    useEffect(() => {
             const category = $('.category')
             $('.edit').addEventListener('submit', (e) => {
                 e.preventDefault();

@@ -10,6 +10,9 @@ import AdminProductEdit from "./pages/admin/products/edit";
 import AdminCategory from "./pages/admin/category/list";
 import AdminCategoryAdd from "./pages/admin/category/add";
 import AdminCategoryEdit from "./pages/admin/category/edit";
+import Signup from "./components/client/singup";
+import Signin from "./components/client/signin";
+import Card from "./pages/client/card";
 
 
 router.on({
@@ -18,6 +21,9 @@ router.on({
         render(() => ProductDetail(data), app),
             window.scrollTo(0, 0)
     },
+    "/account/signup": () => render(Signup, app),
+    "/account/signin": () => render(Signin, app),
+    "/card": () => render(Card, app),
     
     //Admin
     "/admin/products": () => render(AdminProducts,app),

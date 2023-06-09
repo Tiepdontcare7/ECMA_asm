@@ -1,6 +1,6 @@
 // import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
-import urlApi from '../../../config/config';
+import urlApi, { urlCate } from '../../../config/config';
 import { $, $$ } from '../../../utilities';
 import HeaderAdmin from '../../../components/admin/headeradmin';
 import { useState, useEffect, router } from '../../../lib';
@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 
 const AdminProducts = () => {
     const [data, setData] = useState([])
+    const [cate, setCate] = useState([])
     useEffect(() => {
         axios.get(urlApi)
             .then(({ data }) => {
@@ -15,48 +16,54 @@ const AdminProducts = () => {
             })
     }, [])
 
-    axios.get(urlApi)
-        .then(() => {
-            $$('.delete').forEach((btn) => {
-                btn.addEventListener('click', function () {
-                    // const rs = confirm('Are you sure you want to delete this item ?');
-                    // if (rs) {
-                    //     axios.delete(urlApi + '/' + `${this.dataset.id}`)
-                    //         .then(() => {
-                    //             router.navigate('#/admin/products')
-                    //         })
-                    // }
-                    Swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, delete it!'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            axios.delete(urlApi + '/' + `${this.dataset.id}`)
-                                .then(() => {
-                                    Swal.fire(
-                                        'Deleted!',
-                                        'Your file has been deleted.',
-                                        'success'
-                                    ).then(() => {
-                                        router.navigate('/admin/products')
-                                    })
+    useEffect(() => {
+        $$('.delete').forEach((btn) => {
+            btn.addEventListener('click', function () {
+                // const rs = confirm('Are you sure you want to delete this item ?');
+                // if (rs) {
+                //     axios.delete(urlApi + '/' + `${this.dataset.id}`)
+                //         .then(() => {
+                //             router.navigate('#/admin/products')
+                //         })
+                // }
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        axios.delete(urlApi + '/' + `${this.dataset.id}`)
+                            .then(() => {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
+                                ).then(() => {
+                                    router.navigate('/admin/products')
                                 })
-                        }
-                    })
+                            })
+                    }
                 })
             })
-
         })
+    })
+
+    useEffect(() => {
+        axios.get(urlCate)
+            .then(({ data }) => {
+                setCate(data)
+            })
+
+    },[])
 
 
     return `
     ${HeaderAdmin()}
-    <a class="border border-[#000] px-10 py-2 rounded inline-block" href="/admin/product/add">
+    <a class="border border-[#000] px-10 py-2 rounded inline-block" href="#/admin/product/add">
         <button>Add</button>
     </a>
     <table>
@@ -72,11 +79,17 @@ const AdminProducts = () => {
         </thead>
         <tbody>
             ${data.map((item) => {
-        return `
+                return `
                     <tr>
                         <th>${item.id}</th>
                         <td>${item.name}</td>
-                        <td>${item.category}</td>
+                        <td>
+                            ${
+                                (cate.find( i => {
+                                    return i.id == item.category
+                                }))?.name == undefined ? 'undefined' : (cate.find( i => i.id == item.category ))?.name
+                            }
+                        </td>
                         <td>${item.short_description || item.description}</td>
                         <td>${item.original_price}</td>
                         <td>

@@ -1,25 +1,57 @@
 import axios from "axios";
+import { router, useEffect, useState } from "../../lib";
+import { $ } from "../../utilities";
+import Account from "./account";
 import urlApi from "../../config/config";
-import { useEffect } from "../../lib";
 
 const Header = () => {
-  axios.get(urlApi)
-    .then(({ data }) => {
+
+  const [acc, setAcc] = useState([])
+
+  useEffect(() => {
+    const dataSignin = localStorage.getItem('data');
+    if (dataSignin != null) {
+      const data = JSON.parse(dataSignin);
+      setAcc(data.username)
+    }
+  },[])
+
+  useEffect(() => {
+    $('.out').onclick = () => {
+      localStorage.removeItem('data');
+      // router.navigate('/')
+      window.location.reload();
+    }
+    $('.card').onclick = () => {
+      const dataSignin = localStorage.getItem('data');
+      if (dataSignin == null) {
+        alert('Bạn cần đăng nhập!')
+        router.navigate('/account/signin')
+      }else{
+        router.navigate('#/card')
+      }
+
+    }
+  })
+
+  useEffect(() => {
+    axios.get(urlApi)
+    .then(({data})=> {
+
       const inputNav = document.querySelector('.input-nav');
       const searchNav = document.querySelector('.search-nav');
-
+  
       inputNav.addEventListener('keyup', function (e) {
-        // console.log(this.value);
         const dataFilter = data.filter((item) => item.name.toLowerCase().trim().includes(this.value.toLowerCase().trim()));
         const html = dataFilter.map((item) => {
           return `
-            <li>
-              <a class="hover:bg-slate-100 text-sm hover:text-black block p-2" href="#/product/${item.id}">${item.name}</a>
-            </li>
-        `
+              <li>
+                <a class="hover:bg-slate-100 text-sm hover:text-black block p-2" href="#/product/${item.id}">${item.name}</a>
+              </li>
+          `
         }).join('')
         searchNav.querySelector('ul').innerHTML = html;
-
+  
         if (e.key === "Backspace" && this.value === '') {
           searchNav.style.display = 'none';
         } else {
@@ -27,6 +59,7 @@ const Header = () => {
         }
       })
     })
+  })
 
 
   return `
@@ -57,21 +90,12 @@ const Header = () => {
           </div>
         </div>
 
-        <div class="flex items-center pr-7">
+        <div class=" flex items-center pr-7">
           <div>
-            <ion-icon class="text-[28px] pr-2" name="person-outline"></ion-icon>
+            <ion-icon class="out text-[28px] pr-2 cursor-pointer" name="person-outline"></ion-icon>
           </div>
-          <div>
-            <div class="text-[12px] mt-[-4px]">
-              <a href="#">Đăng nhập</a>
-              <a class="border-l border-[#fff] pl-1" href="#">Đăng ký</a>
-            </div>
-            <div class="text-[12px] flex items-center">
-              <a href="#">Tài khoản</a>
-              <span class="mt-1 ml-[2px]">
-                <ion-icon name="caret-down-outline"></ion-icon>
-              </span>
-            </div>
+          <div class="account">
+            ${`${acc}` || Account()}
           </div>
         </div>
 
@@ -83,7 +107,7 @@ const Header = () => {
             <span
               class="text-black text-[11px] bg-yellow-500 rounded-full px-[4px] absolute top-[-17px] right-[2px] block">0</span>
           </span>
-          <a href="#" class="ml-1 text-[11px]">Giỏ hàng</a>
+          <a href="#" class="card ml-1 text-[11px]">Giỏ hàng</a>
         </div>
       </div>
     </div>

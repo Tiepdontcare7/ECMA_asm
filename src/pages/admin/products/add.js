@@ -110,7 +110,7 @@ const AdminProductAdd = () => {
             ${cate
             .map((i) => {
                 return ` 
-                    <option value="${i.name}">${i.name}</option>
+                    <option value="${i.id}">${i.name}</option>
                     `;
             })
             .join("")}
