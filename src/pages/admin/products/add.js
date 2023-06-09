@@ -21,22 +21,15 @@ const AdminProductAdd = () => {
 
         $(".add").addEventListener("submit", (e) => {
             e.preventDefault();
-            const title = $(".title");
-            const desc = $(".description");
-            const price = $(".price");
-            const image = $(".image");
-            const cate = $(".category");
+            
             const post = {
-                name: title.value,
-                category: cate.value,
-                description: desc.value,
-                short_description: desc.value,
-                list_price: price.value,
-                original_price: price.value,
-                images:
-                    image.value === ""
-                        ? ["https://picsum.photos/250/370"]
-                        : [image.value],
+                name: $(".title").value,
+                category: $(".category").value,
+                description: $(".description").value,
+                short_description: $(".description").value,
+                list_price: $(".price").value,
+                original_price: $(".price").value,
+                images: $(".image").value === "" ? ["https://picsum.photos/250/370"] : [$(".image").value],
             };
 
             let check = true;
@@ -46,7 +39,8 @@ const AdminProductAdd = () => {
                 }
             });
             if (check && post.name != '' && post.category != '') {
-                axios.post(urlApi, post).then(() => {
+                axios.post(urlApi, post)
+                .then(() => {
                     Swal.fire({
                         icon: 'success',
                         title: 'Add products successfully',

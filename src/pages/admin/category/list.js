@@ -19,13 +19,6 @@ const AdminCategory = () => {
     $$('.delete').forEach((btn) => {
       btn.addEventListener('click', function (e) {
         e.preventDefault()
-        // const rs = confirm('Are you sure you want to delete this item ?');
-        // if (rs) {
-        //   axios.delete(urlCate + '/' + `${this.dataset.id}`)
-        //     .then(() => {
-        //       router.navigate('/admin/category')
-        //     })
-        // }
         Swal.fire({
           title: 'Are you sure?',
           text: "You won't be able to revert this!",

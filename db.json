@@ -15,7 +15,7 @@
   ],
   "category": [
     {
-      "name": "Tiểu thuyết q",
+      "name": "Tiểu thuyết",
       "id": 1
     },
     {
@@ -23,34 +23,30 @@
       "name": "Truyện, tiểu thuyết"
     },
     {
-      "id": 3,
-      "name": "Kinh doanh"
+      "name": "Kinh doanh update",
+      "id": 3
     },
     {
       "id": 4,
       "name": "Trinh Thám"
     },
     {
-      "name": "new new new hi",
+      "name": "new new new",
       "id": 5
     },
     {
-      "name": "lewan",
-      "id": 6
-    },
-    {
-      "name": "robert",
+      "name": "robert update",
       "id": 7
     }
   ],
   "data": [
     {
-      "name": "101 BÍ KÍP SỐNG aa",
-      "description": "Chúng ta đang sống trong một thời đại vội vã, dường như mọi giao tiếp đều ở trên màn hình xanh, và dường như chúng ta thường quên đi những niềm vui giản dị, những ấm áp yêu thương, những cử chỉ chân t...",
-      "category": "1",
-      "short_description": "Chúng ta đang sống trong một thời đại vội vã, dường như mọi giao tiếp đều ở trên màn hình xanh, và dường như chúng ta thường quên đi những niềm vui giản dị, những ấm áp yêu thương, những cử chỉ chân t...",
-      "list_price": "138000",
-      "original_price": "138000",
+      "name": "101 BÍ KÍP SỐNG",
+      "description": "aChúng ta đang sống trong một thời đại vội vã, dường như mọi giao tiếp đều ở trên màn hình xanh, và dường như chúng ta thường quên đi những niềm vui giản dị, những ấm áp yêu thương, những cử chỉ chân t...",
+      "category": "7",
+      "short_description": "aChúng ta đang sống trong một thời đại vội vã, dường như mọi giao tiếp đều ở trên màn hình xanh, và dường như chúng ta thường quên đi những niềm vui giản dị, những ấm áp yêu thương, những cử chỉ chân t...",
+      "list_price": "13800012",
+      "original_price": "13800012",
       "images": [
         "https://salt.tikicdn.com/ts/product/82/82/80/c542073200c6e95d3e89840b2f41ce2e.jpg"
       ],
@@ -120,7 +116,7 @@
     {
       "name": "Cây Cam Ngọt Của Tôi",
       "description": "“Vị chua chát của cái nghèo hòa trộn với vị ngọt ngào khi khám phá ra những điều khiến cuộc đời này đáng số một tác phẩm kinh điển của Brazil.”- Booklist“Một cách nhìn cuộc sống gần như hoàn chỉnh t...",
-      "category": "9",
+      "category": "6",
       "short_description": "“Vị chua chát của cái nghèo hòa trộn với vị ngọt ngào khi khám phá ra những điều khiến cuộc đời này đáng số một tác phẩm kinh điển của Brazil.”- Booklist“Một cách nhìn cuộc sống gần như hoàn chỉnh t...",
       "list_price": "108000",
       "original_price": "108000",
@@ -159,18 +155,6 @@
       "short_description": "Sơ lược về tác phẩmTất cả những trải nghiệm trong chuyến phiêu du theo đuổi vận mệnh của mình đã giúp Santiago thấu hiểu được ý nghĩa sâu xa nhất của hạnh phúc, hòa hợp với vũ trụ và con người.Tiểu ..."
     },
     {
-      "name": "hhhhhhhhhhhhhhhhhhhhhhhhhh",
-      "description": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
-      "category": 2,
-      "short_description": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
-      "list_price": "7",
-      "original_price": "7",
-      "images": [
-        "https://picsum.photos/250/350"
-      ],
-      "id": 19
-    },
-    {
       "name": "jjjjjjjjjjjjjjjjjjjjjjjjjjj",
       "description": "jjjjjjjjjjjjjjjjjjjjjjjj",
       "category": 1,
@@ -181,18 +165,6 @@
         "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fhongbiencang.com%2Fimages%2Fnews%2F2018%2F06%2F14%2Fchf_11529009768.jpg&f=1&nofb=1&ipt=360a0d06e895a5d08f267c558da2983af4ac29ce840ec3559dd1b977c8fe43ec&ipo=images"
       ],
       "id": 20
-    },
-    {
-      "name": "iiiiiiiiiiiiiiiiiiiiii",
-      "category": 4,
-      "description": "iippppppppppppppppppppp",
-      "short_description": "iippppppppppppppppppppp",
-      "list_price": "56",
-      "original_price": "56",
-      "images": [
-        "https://salt.tikicdn.com/ts/product/45/3b/fc/aa81d0a534b4570"
-      ],
-      "id": 21
     },
     {
       "name": "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk uppbe",
@@ -207,52 +179,16 @@
       "id": 24
     },
     {
-      "name": "wwwwwwwwwww",
-      "category": "5",
-      "description": "44444444444444444444",
-      "short_description": "44444444444444444444",
-      "list_price": "5",
-      "original_price": "5",
+      "name": "hihihiuuuyyuuy",
+      "category": "4",
+      "description": "22333313",
+      "short_description": "22333313",
+      "list_price": "12",
+      "original_price": "12",
       "images": [
-        "https://s"
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.gy8_m13qDwE2iyvbEk9_WAHaJQ%26pid%3DApi&f=1&ipt=d79ed2fded040004a3decd3e37d33bdf932aef721224f28705efe3988daaf818&ipo=images"
       ],
-      "id": 26
-    },
-    {
-      "name": "htttpssssss",
-      "category": "1",
-      "description": "nackdff",
-      "short_description": "nackdff",
-      "list_price": "11",
-      "original_price": "11",
-      "images": [
-        "https://kkkk"
-      ],
-      "id": 27
-    },
-    {
-      "name": "777uuuuuuuuuu",
-      "description": "hhhhhhhhh",
-      "category": "6",
-      "short_description": "hhhhhhhhh",
-      "list_price": "5",
-      "original_price": "5",
-      "images": [
-        "https://uu"
-      ],
-      "id": 29
-    },
-    {
-      "name": "tttttttttttttttttttttt",
-      "description": "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
-      "category": "7",
-      "short_description": "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
-      "list_price": "123",
-      "original_price": "123",
-      "images": [
-        "https://"
-      ],
-      "id": 30
+      "id": 31
     }
   ]
 }

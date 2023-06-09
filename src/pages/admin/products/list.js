@@ -17,15 +17,15 @@ const AdminProducts = () => {
     }, [])
 
     useEffect(() => {
+        axios.get(urlCate)
+            .then(({ data }) => {
+                setCate(data)
+            })
+    }, [])
+
+    useEffect(() => {
         $$('.delete').forEach((btn) => {
             btn.addEventListener('click', function () {
-                // const rs = confirm('Are you sure you want to delete this item ?');
-                // if (rs) {
-                //     axios.delete(urlApi + '/' + `${this.dataset.id}`)
-                //         .then(() => {
-                //             router.navigate('#/admin/products')
-                //         })
-                // }
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -53,12 +53,16 @@ const AdminProducts = () => {
     })
 
     useEffect(() => {
-        axios.get(urlCate)
-            .then(({ data }) => {
-                setCate(data)
-            })
+        $('.search-btn').onclick = (e) => {
+            const ipvl = $('.search-admin').value
+            axios.get(urlApi)
+                .then(({ data }) => {
+                    const datafilter = data.filter(item => item.name.toLowerCase().includes(ipvl.toLowerCase()))
+                    setData(datafilter)
+                })
+        }
+    })
 
-    },[])
 
 
     return `
@@ -85,9 +89,7 @@ const AdminProducts = () => {
                         <td>${item.name}</td>
                         <td>
                             ${
-                                (cate.find( i => {
-                                    return i.id == item.category
-                                }))?.name == undefined ? 'undefined' : (cate.find( i => i.id == item.category ))?.name
+                                (cate.find( i => { return i.id == item.category}))?.name == undefined ? 'undefined' : (cate.find(i => i.id == item.category))?.name
                             }
                         </td>
                         <td>${item.short_description || item.description}</td>
@@ -99,7 +101,7 @@ const AdminProducts = () => {
                             <button data-id="${item.id}" class="delete">Xóa</button>
                         </td>
                     </tr>`
-    }).join('')
+                }).join('')
         }
         </tbody>
     </table>

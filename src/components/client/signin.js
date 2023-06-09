@@ -1,6 +1,6 @@
-import { render, router, useEffect } from "../../lib"
+import { router, useEffect } from "../../lib"
 import { $, login } from "../../utilities"
-import Header from "./header"
+
 
 const Signin = () => {
     useEffect(() => {
@@ -12,18 +12,27 @@ const Signin = () => {
                 username: username.value,
                 password: password.value,
             }
-            const userLocal = JSON.parse(localStorage.getItem(user.username))
+            const userLocal = localStorage.getItem(user.username)
             
-            login(userLocal, user)
-            .then((data) => {
-                localStorage.setItem('data', JSON.stringify(data));
-                router.navigate('/')
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+            if(userLocal != null) {
+                const userLocalParse = JSON.parse(userLocal)
 
-        })
+                login(userLocalParse, user)
+                .then((data) => {
+                    localStorage.setItem('data', JSON.stringify(data));
+                    router.navigate('/')
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+            }else if(!user.username || !user.password){
+                alert('Không bỏ trống')
+            }else{
+                alert('Sai tài khoản hoặc mật khẩu')
+            }
+            
+
+        }, [])
     })
     return `
         <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
