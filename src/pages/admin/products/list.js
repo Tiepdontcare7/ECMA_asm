@@ -53,14 +53,16 @@ const AdminProducts = () => {
     })
 
     useEffect(() => {
-        $('.search-btn').onclick = (e) => {
-            const ipvl = $('.search-admin').value
+        $('#form-search').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const valueInput = $('.search-admin').value
             axios.get(urlApi)
                 .then(({ data }) => {
-                    const datafilter = data.filter(item => item.name.toLowerCase().includes(ipvl.toLowerCase()))
+                    const datafilter = data.filter(data => data.name.toLowerCase().includes(valueInput.toLowerCase()));
                     setData(datafilter)
                 })
-        }
+
+        })
     })
 
 
@@ -83,14 +85,13 @@ const AdminProducts = () => {
         </thead>
         <tbody>
             ${data.map((item) => {
-                return `
+        return `
                     <tr>
                         <th>${item.id}</th>
                         <td>${item.name}</td>
                         <td>
-                            ${
-                                (cate.find( i => { return i.id == item.category}))?.name == undefined ? 'undefined' : (cate.find(i => i.id == item.category))?.name
-                            }
+                            ${(cate.find(i => { return i.id == item.category }))?.name == undefined ? 'undefined' : (cate.find(i => i.id == item.category))?.name
+            }
                         </td>
                         <td>${item.short_description || item.description}</td>
                         <td>${item.original_price}</td>
@@ -101,7 +102,7 @@ const AdminProducts = () => {
                             <button data-id="${item.id}" class="delete">Xóa</button>
                         </td>
                     </tr>`
-                }).join('')
+    }).join('')
         }
         </tbody>
     </table>
