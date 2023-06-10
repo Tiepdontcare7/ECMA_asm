@@ -1,11 +1,19 @@
+import Joi from "joi"
 import { router, useEffect } from "../../lib"
 import { $ } from "../../utilities"
+
+const schema = Joi.object({
+    username: Joi.string().min(4).required(),
+    password: Joi.string().min(4),
+    cfpassword: Joi.string().min(4)
+})
 
 const Signup = () => {
     useEffect(() => {
         const username = $(".username")
         const password = $(".password")
         const cfpassword = $('.cfpassword')
+
         $('.signup').addEventListener('submit', (e) => {
             e.preventDefault();
             const user = {
@@ -13,19 +21,22 @@ const Signup = () => {
                 password: password.value,
                 cfpassword: cfpassword.value
             }
+            const { error, value: { name } } = schema.validate(user)
+
             const userStore = localStorage.getItem(user.username)
-            if(userStore != null){
+            if (error) {
+                alert(error.message)
+            } else if (userStore != null) {
                 alert('Account đã tồn tại!')
-            }else if(!user.username || !user.password || !user.cfpassword){
-                alert('Không bỏ trống!')
-            }
-            else{
+            } else if (user.password != user.cfpassword) {
+                alert('Mật khẩu xác nhận không đúng!')
+            } else {
                 localStorage.setItem(user.username, JSON.stringify(user))
                 alert('Đăng ký thành công, hãy đăng nhập!')
                 router.navigate('/')
             }
         })
-    },[])
+    }, [])
     return `
         <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-lg">

@@ -69,7 +69,7 @@ const AdminProducts = () => {
 
     return `
     ${HeaderAdmin()}
-    <a class="border border-[#000] px-10 py-2 rounded inline-block" href="#/admin/product/add">
+    <a class="border float-right my-4 bg-blue-400 text-white border-[#000] px-10 py-2 rounded inline-block" href="#/admin/product/add">
         <button>Add</button>
     </a>
     <table>

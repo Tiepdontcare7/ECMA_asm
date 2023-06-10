@@ -1,36 +1,43 @@
 import { router, useEffect } from "../../lib"
 import { $, login } from "../../utilities"
+import Joi from "joi"
 
+const schema = Joi.object({
+    username: Joi.string().min(4),
+    password: Joi.string().min(4),
+})
 
 const Signin = () => {
     useEffect(() => {
         const username = $(".username")
         const password = $(".password")
+
         $('.signin').addEventListener('submit', (e) => {
             e.preventDefault();
             const user = {
                 username: username.value,
                 password: password.value,
             }
+            const { error, value: { name } } = schema.validate(user)
+
             const userLocal = localStorage.getItem(user.username)
-            
-            if(userLocal != null) {
+
+            if (error) {
+                alert(error.message)
+            } else if (userLocal != null) {
                 const userLocalParse = JSON.parse(userLocal)
 
                 login(userLocalParse, user)
-                .then((data) => {
-                    localStorage.setItem('data', JSON.stringify(data));
-                    router.navigate('/')
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-            }else if(!user.username || !user.password){
-                alert('Không bỏ trống')
-            }else{
-                alert('Sai tài khoản hoặc mật khẩu')
+                    .then((data) => {
+                        localStorage.setItem('data', JSON.stringify(data));
+                        router.navigate('/')
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+            } else {
+                alert('Sai tài khoản or mật khẩu!')
             }
-            
 
         }, [])
     })
