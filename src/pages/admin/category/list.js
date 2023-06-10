@@ -35,8 +35,9 @@ const AdminCategory = () => {
                   'Deleted!',
                   'Your file has been deleted.',
                   'success'
-                )
-                router.navigate('/admin/category')
+                ).then(()=>{
+                  router.navigate('/admin/category')
+                })
               })
           }
         })

@@ -1,8 +1,13 @@
 import axios from "axios";
-import urlApi, { urlCate } from "../../../config/config";
-import { $ } from "../../../utilities";
-import { router, useEffect } from "../../../lib";
 import Swal from "sweetalert2";
+import Joi from "joi";
+import { router, useEffect } from "../../../lib";
+import { $ } from "../../../utilities";
+import  { urlCate } from "../../../config/config";
+
+const schema = Joi.object({
+    name: Joi.string().trim().min(5).required(),
+})
 
 const AdminCategoryAdd = () => {
     useEffect(() => {
@@ -12,23 +17,22 @@ const AdminCategoryAdd = () => {
             const data = {
                 name: category.value
             }
-            if (data.name) {
+            const {error, value: {name}} = schema.validate(data)
+    
+            if (!error) {
                 axios.post(urlCate, data)
                     .then(() => {
-                        // alert('Add category successfully!')
                         Swal.fire({
                             icon: 'success',
-                            title: 'Add category successfully',
-                            text: 'Something went wrong!',
+                            title: `Add ${name} to category successfully`,
                         }).then(() => {
                             router.navigate('/admin/category')
                         })
                     })
             } else {
-                // alert('Không được bỏ trống!')
                 Swal.fire({
                     icon: 'warning',
-                    title: 'Không được bỏ trống!',
+                    title: error.message,
                     text: 'Something went wrong!',
                 })
             }

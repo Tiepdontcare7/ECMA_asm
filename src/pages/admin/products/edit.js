@@ -1,8 +1,19 @@
-import urlApi, { urlCate } from "../../../config/config";
 import axios from "axios";
+import Swal from "sweetalert2";
+import Joi from "joi";
+import urlApi, { urlCate } from "../../../config/config";
 import { $, $$ } from "../../../utilities";
 import { router, useState, useEffect } from "../../../lib";
-import Swal from "sweetalert2";
+
+const schema = Joi.object({
+    name: Joi.string().min(5),
+    description: Joi.string().min(5),
+    category: Joi.string(),
+    short_description: Joi.string().min(5),
+    list_price: Joi.number(),
+    original_price: Joi.number(),
+    images: Joi.array(),
+})
 
 const AdminProductEdit = ({ id }) => {
     const [data, setData] = useState([]);
@@ -37,10 +48,9 @@ const AdminProductEdit = ({ id }) => {
                 original_price: price.value,
                 images: image.value === "" ? ["https://picsum.photos/200/300"] : [image.value],
             };
-            if(put.name){
+            const {error, value: {name}} = schema.validate(put);
+            if (!error) {
                 axios.put(urlApi + "/" + id, put).then(() => {
-                    // alert(`Edit ${put.name} Success`),
-                    //  router.navigate("/admin/products");
                     Swal.fire({
                         icon: 'success',
                         title: 'Edit products successfully',
@@ -49,7 +59,12 @@ const AdminProductEdit = ({ id }) => {
                         router.navigate('/admin/products')
                     })
                 });
-
+            }else{
+                Swal.fire({
+                    icon: 'warning',
+                    title: error.message,
+                    text: 'Something went wrong!',
+                })
             }
         });
     });
@@ -92,14 +107,13 @@ const AdminProductEdit = ({ id }) => {
 
                 <div class="relative">
                     <select class="category w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm text-gray-500">
-                        <option value="${data.category}">${
-                            (cate.find( i => i.id == data.category ))?.name
-                        }</option>
+                        <option value="${data.category}">${(cate.find(i => i.id == data.category))?.name
+        }</option>
                         ${cate.map((i) => {
-                            return `
+            return `
                                 <option value="${i.id}">${i.name}</option>
                             `
-                            }).join('')}
+        }).join('')}
                     </select>
                 </div>
             </div>

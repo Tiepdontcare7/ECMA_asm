@@ -1,8 +1,13 @@
 import axios from "axios";
-import { urlCate } from "../../../config/config";
+import Swal from "sweetalert2";
+import Joi from "joi";
 import { useEffect, useState, router } from "../../../lib";
 import { $ } from "../../../utilities";
-import Swal from "sweetalert2";
+import { urlCate } from "../../../config/config";
+
+const scheme = Joi.object({
+    name: Joi.string().trim().min(5).required(),
+})
 
 const AdminCategoryEdit = ({ id }) => {
     const [data, setData] = useState([])
@@ -15,29 +20,32 @@ const AdminCategoryEdit = ({ id }) => {
     }, [])
 
     useEffect(() => {
-            const category = $('.category')
-            $('.edit').addEventListener('submit', (e) => {
-                e.preventDefault();
-                const put = {
-                    name: category.value
-                }
-                if (put.name) {
-                    axios.put(urlCate + '/' + id, put)
-                        .then(() => {
-                            // alert('Edit successfully')
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Edit category successfully',
-                                text: 'Something went wrong!',
-                            }).then(() => {
-                                router.navigate('/admin/category')
-                            })
+        $('.edit').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const put = {
+                name: $('.category').value
+            }
+            const { error, value: { name } } = scheme.validate(put);
+            if (!error) {
+                axios.put(urlCate + '/' + id, put)
+                    .then(() => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Edit category successfully',
+                            text: 'Something went wrong!',
+                        }).then(() => {
+                            router.navigate('/admin/category')
                         })
-                } else {
-                    alert('Không được bỏ trống!')
-                }
-            })
+                    })
+            } else {
+                Swal.fire({
+                    icon: 'warning',
+                    title: error,
+                    text: 'Something went wrong!',
+                })
+            }
         })
+    })
 
     return `
     <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
