@@ -26,7 +26,7 @@ const Header = () => {
       const dataSignin = localStorage.getItem('data');
       if (dataSignin == null) {
         alert('Bạn cần đăng nhập!')
-        router.navigate('#/account/signin')
+        router.navigate('/account/signin')
       }else{
         router.navigate('#/card')
       }

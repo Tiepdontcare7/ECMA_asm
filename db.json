@@ -27,18 +27,6 @@
           "quantity": "1",
           "image": "https://salt.tikicdn.com/ts/product/82/82/80/c542073200c6e95d3e89840b2f41ce2e.jpg",
           "price": "138000"
-        },
-        {
-          "name": "Chó sủa nhầm cây - Tại sao những gì ta biết về thành công có khi lại sai",
-          "quantity": "1",
-          "image": "https://salt.tikicdn.com/ts/product/29/c6/6d/64243ee01d5a0786fdb3c3977ec9c63e.jpg",
-          "price": 150000
-        },
-        {
-          "name": "Rừng Nauy (Tái Bản)",
-          "quantity": "1",
-          "image": "https://salt.tikicdn.com/ts/product/c9/e4/18/a9cfc425fa590c453f20307229804bb3.jpg",
-          "price": "150000"
         }
       ],
       "role": 0,
@@ -49,10 +37,16 @@
       "password": "$2a$10$HPGYb4fWSgRc99etpZwfs.uF7HxqEBSXqOyOnaOZxRKBPc6Jgm/cm",
       "card": [
         {
-          "name": "Chó sủa nhầm cây - Tại sao những gì ta biết về thành công có khi lại sai",
+          "name": "101 BÍ KÍP SỐNG",
+          "quantity": 12,
+          "image": "https://salt.tikicdn.com/ts/product/82/82/80/c542073200c6e95d3e89840b2f41ce2e.jpg",
+          "price": "13800012"
+        },
+        {
+          "name": "101 BÍ KÍP SỐNG SÓT NƠI CÔNG SỞ-Vừa sửa xong",
           "quantity": "1",
-          "image": "https://salt.tikicdn.com/ts/product/29/c6/6d/64243ee01d5a0786fdb3c3977ec9c63e.jpg",
-          "price": 150000
+          "image": "https://salt.tikicdn.com/ts/product/82/82/80/c542073200c6e95d3e89840b2f41ce2e.jpg",
+          "price": "138000"
         }
       ],
       "role": 0,
@@ -69,7 +63,7 @@
       "name": "Truyện, tiểu thuyết"
     },
     {
-      "name": "Kinh doanh update",
+      "name": "Kinh doanh",
       "id": 3
     },
     {

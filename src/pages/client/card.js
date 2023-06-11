@@ -1,18 +1,18 @@
 import { useEffect, useState } from "../../lib"
-import { findUserByName , $} from "../../utilities"
+import { findUserByName, $ } from "../../utilities"
 import Header from "../../components/client/header"
 
 const Card = () => {
   const [data, setData] = useState([])
 
-  useEffect(async() =>{
+  useEffect(async () => {
     const userLocal = JSON.parse(localStorage.getItem('data'))
     const userFilter = await findUserByName(userLocal.username)
-    
+
     setData(userFilter.card)
-  },[])
-  
-  useEffect(async() => {
+  }, [])
+
+  useEffect(async () => {
     const userLocal = JSON.parse(localStorage.getItem('data'))
     const userFilter = await findUserByName(userLocal.username)
     let sum = 0
@@ -20,13 +20,15 @@ const Card = () => {
       sum += 1
     });
     $('.quantity-card').textContent = sum
+
+    cm: //Tổng price
+    $('.price').textContent = data.reduce((sum, e) => sum + Number(e.price), 0)
   })
 
   return `
   ${Header()}
     <div class="overflow-x-auto">
-    <h1>Card</h1>
-      <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+      <table class="min-w-full my-10 divide-y-2 divide-gray-200 bg-white text-sm">
         <thead class="ltr:text-left rtl:text-right">
           <tr>
             <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
@@ -46,8 +48,8 @@ const Card = () => {
         </thead>
 
         <tbody class="divide-y divide-gray-200">
-        ${data.map((item)=>{
-          return `
+        ${data.map((item) => {
+    return `
             <tr>
               <td class="text-center whitespace-nowrap py-2 text-gray-900">
                 <img class="w-full max-w-[150px] block mx-auto" src="${item.image}"/>
@@ -65,15 +67,24 @@ const Card = () => {
               </td>
             </tr>
           `
-        }).join('')
+      }).join('')
 
-        }
+    }
 
         </tbody>
       </table>
-      <div>
+
+      ${
+        data.length == 0 ? `
+        <div class="py-10">
+          <img class="block mx-auto" src="https://bizweb.dktcdn.net/100/320/202/themes/714916/assets/empty-cart.png?1650292912948" />
+        </div>
+        ` : ''
+      }
+
+      <div class="border-t border-[#ccc]">
         <span>Tổng tiền: </span>
-        <span>0</span>
+        <span class="price text-blue-500">0</span>
       </div>
       <button>Thanh toán</button>
     </div>

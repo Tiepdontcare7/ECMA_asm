@@ -38,7 +38,9 @@ const ProductDetail = ({ id }) => {
 
   useEffect(() => {
     $('.add-card').addEventListener('click', () => {
+
       const dataLocal = localStorage.getItem('data');
+
       axios.get(urlUsers)
         .then(async (ss) => {
           if (dataLocal) {
@@ -46,27 +48,47 @@ const ProductDetail = ({ id }) => {
 
             const userFilter = await findUserByName(userLocal.username)
 
-            userFilter.card.push({
-              name: data.name,
-              quantity: $('.quantity').value,
-              image: data.images?.[0],
-              price: data.list_price
-            })
-            
-            axios.put(urlUsers + '/' + userFilter.id, userFilter)
-            alert('Đã thêm')
+            const findName = userFilter.card.find(i => i.name == data.name);
 
-            updateQuantityCard()
+            if (!findName) {
+
+              userFilter.card.push({
+                name: data.name,
+                quantity: $('.quantity').value,
+                image: data.images?.[0],
+                price: data.list_price
+              })
+
+              axios.put(urlUsers + '/' + userFilter.id, userFilter)
+              alert('Đã add to giỏ!')
+              updateQuantityCard()
+
+            } else {
+
+              const data = {
+                ...userFilter,
+                card: [{
+                  name: userFilter.card[0].name,
+                  quantity: Number(userFilter.card[0].quantity) + Number($('.quantity').value),
+                  image: userFilter.card[0].image,
+                  price: userFilter.card[0].price,
+                }
+                ]
+              }
+              axios.put(urlUsers + '/' + userFilter.id, data)
+              // updateQuantityCard()
+              alert('Sản phẩm đã có trong giỏ! Đã cập nhật quantity!')
+            }
           } else {
             alert('Cần đăng nhập để mua hàng!')
           }
         })
     })
   })
-  
+
   useEffect(async () => {
     const userLocal = JSON.parse(localStorage.getItem('data'))
-    if(userLocal){
+    if (userLocal) {
       const userFilter = await findUserByName(userLocal.username)
       let sum = 0
       userFilter.card.forEach((e) => {
