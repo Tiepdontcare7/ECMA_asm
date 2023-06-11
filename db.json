@@ -33,6 +33,12 @@
           "quantity": "1",
           "image": "https://salt.tikicdn.com/ts/product/29/c6/6d/64243ee01d5a0786fdb3c3977ec9c63e.jpg",
           "price": 150000
+        },
+        {
+          "name": "Rừng Nauy (Tái Bản)",
+          "quantity": "1",
+          "image": "https://salt.tikicdn.com/ts/product/c9/e4/18/a9cfc425fa590c453f20307229804bb3.jpg",
+          "price": "150000"
         }
       ],
       "role": 0,
@@ -194,9 +200,9 @@
       "id": 8
     },
     {
-      "name": "jjjjjjjjjjjjjjjjjjjjjjjjjjj",
+      "name": "jjjjjjjjjjjjjjjjjjjjjjjjjjj2",
       "description": "jjjjjjjjjjjjjjjjjjjjjjjj",
-      "category": 1,
+      "category": "1",
       "short_description": "jjjjjjjjjjjjjjjjjjjjjjjj",
       "list_price": "777",
       "original_price": "777",

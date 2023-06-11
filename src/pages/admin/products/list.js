@@ -85,13 +85,12 @@ const AdminProducts = () => {
         </thead>
         <tbody>
             ${data.map((item) => {
-        return `
+                return `
                     <tr>
                         <th>${item.id}</th>
                         <td>${item.name}</td>
                         <td>
-                            ${(cate.find(i => { return i.id == item.category }))?.name == undefined ? 'undefined' : (cate.find(i => i.id == item.category))?.name
-            }
+                            ${(cate.find(i => { return i.id == item.category }))?.name == undefined ? 'undefined' : (cate.find(i => i.id == item.category))?.name }
                         </td>
                         <td>${item.short_description || item.description}</td>
                         <td>${item.original_price}</td>
