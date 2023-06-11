@@ -1,6 +1,11 @@
 import Joi from "joi"
 import { router, useEffect } from "../../lib"
-import { $ } from "../../utilities"
+import { $, hashPassword } from "../../utilities"
+import axios from "axios"
+import { urlUsers } from "../../config/config"
+import bcrypt from 'bcryptjs';
+
+
 
 const schema = Joi.object({
     username: Joi.string().min(4).required(),
@@ -31,9 +36,16 @@ const Signup = () => {
             } else if (user.password != user.cfpassword) {
                 alert('Mật khẩu xác nhận không đúng!')
             } else {
-                localStorage.setItem(user.username, JSON.stringify(user))
-                alert('Đăng ký thành công, hãy đăng nhập!')
-                router.navigate('/')
+                hashPassword(user.password)
+                .then((data)=>{
+                    axios.post(urlUsers, {username: user.username, password: data, card: [], role: 0})
+
+                    localStorage.setItem(user.username, JSON.stringify(user))
+                    alert('Đăng ký thành công, hãy đăng nhập!')
+                    router.navigate('/')
+                })
+
+
             }
         })
     }, [])

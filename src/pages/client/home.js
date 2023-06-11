@@ -1,9 +1,8 @@
 import Footer from "../../components/client/footer"
 import Header from "../../components/client/header"
-// import data from '../../db.json' assert {type: 'json'}
 import axios from 'axios'
 import urlApi from "../../config/config"
-import { $, sortPrice, sortReduce, navBar } from "../../utilities"
+import { $, sortPrice, sortReduce, navBar, findUserByName } from "../../utilities"
 import { useState, useEffect } from "../../lib"
 
 const HomePage = () => {
@@ -81,6 +80,16 @@ const HomePage = () => {
         setData(data);
       })
   }, [])
+
+  useEffect(async () => {
+    const userLocal = JSON.parse(localStorage.getItem('data'))
+    const userFilter = await findUserByName(userLocal.username)
+    let sum = 0
+    userFilter.card.forEach((e) => {
+        sum += 1
+    });
+    $('.quantity-card').textContent = sum
+})
 
 
   return `

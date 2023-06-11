@@ -1,5 +1,9 @@
+import axios from "axios";
 import Navigo from "navigo";
 const router = new Navigo("/", { linksSelector: "a", hash: true });
+import { urlUsers } from "../config/config";
+import bcrypt from 'bcryptjs';
+
 
 function render(data, target = "#app") {
    document.querySelector(target).innerHTML = data();
@@ -88,7 +92,7 @@ const Validate = {
 };
 
 function login(userLocal, user) {
-   return new Promise(function(resolve, reject) {
+   return new Promise(function (resolve, reject) {
       if (userLocal.username == user.username && userLocal.password == user.password) {
          alert('Đăng nhập thành công!')
          resolve(user)
@@ -99,4 +103,35 @@ function login(userLocal, user) {
    })
 }
 
-export { render, router, sortPrice, sortReduce, $, $$, navBar, Validate , login};
+function findUserByName(username) {
+   return new Promise(function (resolve, reject) {
+      axios.get(urlUsers)
+         .then(({ data }) => {
+            const dataFilter = data.find(item => item.username == username)
+            resolve(dataFilter)
+         })
+   })
+}
+
+function hashPassword(password) {
+   return new Promise(function (resolve, reject) {
+      bcrypt.hash(password, 10, function (err, hash) {
+         if (err) {
+            console.error(err);
+            return;
+         }
+         resolve(hash)
+      })
+   })
+}
+
+async function updateQuantityCard() {
+   const userLocal = JSON.parse(localStorage.getItem('data'))
+   const userFilter = await findUserByName(userLocal.username)
+   let sum = 0
+   userFilter.card.forEach((e) => {
+      sum += 1
+   });
+   $('.quantity-card').textContent = sum
+}
+export { render, router, sortPrice, sortReduce, $, $$, navBar, Validate, login, findUserByName, hashPassword, updateQuantityCard };

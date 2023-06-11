@@ -1,9 +1,10 @@
 import Header from "../../components/client/header"
 import Footer from "../../components/client/footer"
-import urlApi from "../../config/config";
+import urlApi, { urlUsers } from "../../config/config";
 import axios from "axios";
-import { router } from "../../lib";
-import { useState, useEffect } from "../../lib";
+import { useState, useEffect, router } from "../../lib";
+import { $, findUserByName, updateQuantityCard } from "../../utilities";
+
 
 const ProductDetail = ({ id }) => {
   const [cate, setCate] = useState([])
@@ -24,18 +25,54 @@ const ProductDetail = ({ id }) => {
 
 
   useEffect(() => {
-      //QUANTITY PRODUCT
-      const quantityInput = document.querySelector('.number');
-      document.querySelector('.add').addEventListener('click', () => {
-        quantityInput.value = parseInt(quantityInput.value) + 1;
-      });
-      document.querySelector('.remove').addEventListener('click', () => {
-        const currentValue = parseInt(quantityInput.value);
-        if (currentValue > 1) quantityInput.value = currentValue - 1;
-      });
+    //QUANTITY PRODUCT
+    const quantityInput = document.querySelector('.number');
+    document.querySelector('.add').addEventListener('click', () => {
+      quantityInput.value = parseInt(quantityInput.value) + 1;
+    });
+    document.querySelector('.remove').addEventListener('click', () => {
+      const currentValue = parseInt(quantityInput.value);
+      if (currentValue > 1) quantityInput.value = currentValue - 1;
+    });
+  })
+
+  useEffect(() => {
+    $('.add-card').addEventListener('click', () => {
+      const dataLocal = localStorage.getItem('data');
+      axios.get(urlUsers)
+        .then(async (ss) => {
+          if (dataLocal) {
+            const userLocal = JSON.parse(dataLocal);
+
+            const userFilter = await findUserByName(userLocal.username)
+
+            userFilter.card.push({
+              name: data.name,
+              quantity: $('.quantity').value,
+              image: data.images?.[0],
+              price: data.list_price
+            })
+            // console.log(userFilter);
+            axios.put(urlUsers + '/' + userFilter.id, userFilter)
+            alert('Đã thêm')
+
+            updateQuantityCard()
+          } else {
+            alert('Cần đăng nhập để mua hàng!')
+          }
+        })
     })
-
-
+  })
+  
+  useEffect(async () => {
+    const userLocal = JSON.parse(localStorage.getItem('data'))
+    const userFilter = await findUserByName(userLocal.username)
+    let sum = 0
+    userFilter.card.forEach((e) => {
+      sum += 1
+    });
+    $('.quantity-card').textContent = sum
+  })
   return `
     ${Header()}
     <div class="path-bar bg-[#F5F5FA] flex items-center max-w-[1440px] mx-auto py-1 px-28">
@@ -129,11 +166,12 @@ const ProductDetail = ({ id }) => {
               <span>Số Lượng</span>
               <div class="mt-3">
                 <button class="remove border px-2 pt-1"><ion-icon name="remove-outline"></ion-icon></button>
-                <input class="number border outline-0 text-center p-[2px] w-12 relative bottom-[2px]" autofocus
+                  <input class="number quantity border outline-0 text-center p-[2px] w-12 relative bottom-[2px]" autofocus
                   type="number" value="1">
                 <button class="add border px-2 pt-1"><ion-icon name="add-outline"></ion-icon></button>
               </div>
 
+              <button class="add-card bg-blue-400 py-3 px-28 text-white mt-7 rounded hover:opacity-70">Thêm card</button>
               <button class="bg-[#FF3945] py-3 px-28 text-white mt-7 rounded hover:opacity-70">Chọn mua</button>
             </div>
           </div>

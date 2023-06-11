@@ -1,16 +1,36 @@
 {
-  "user": [
+  "users": [
     {
       "id": 1,
+      "role": 1,
       "username": "admin",
       "password": 1234,
       "card": [
         {
-          "id": 1,
           "name": "101 BÍ KÍP SỐNG aa",
           "quantity": 1
         }
       ]
+    },
+    {
+      "username": "1111",
+      "password": "$2a$10$fp73kmDXAaUOh1UrUAWE1utBO5CwTcNCc.9IWPumqbAVutCfmKXV6",
+      "card": [
+        {
+          "name": "101 BÍ KÍP SỐNG SÓT NƠI CÔNG SỞ-Vừa sửa xong",
+          "quantity": "1",
+          "image": "https://salt.tikicdn.com/ts/product/82/82/80/c542073200c6e95d3e89840b2f41ce2e.jpg",
+          "price": "138000"
+        },
+        {
+          "name": "101 BÍ KÍP SỐNG SÓT NƠI CÔNG SỞ-Vừa sửa xong",
+          "quantity": "1",
+          "image": "https://salt.tikicdn.com/ts/product/82/82/80/c542073200c6e95d3e89840b2f41ce2e.jpg",
+          "price": "138000"
+        }
+      ],
+      "role": 0,
+      "id": 2
     }
   ],
   "category": [
