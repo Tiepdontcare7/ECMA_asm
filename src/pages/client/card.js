@@ -1,20 +1,15 @@
 import { useEffect, useState } from "../../lib"
 import { findUserByName , $} from "../../utilities"
-import { urlUsers } from "../../config/config"
-import axios from "axios"
 import Header from "../../components/client/header"
 
 const Card = () => {
   const [data, setData] = useState([])
 
   useEffect(async() =>{
-
     const userLocal = JSON.parse(localStorage.getItem('data'))
     const userFilter = await findUserByName(userLocal.username)
     
     setData(userFilter.card)
-
-    
   },[])
   
   useEffect(async() => {

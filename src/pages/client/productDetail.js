@@ -52,7 +52,7 @@ const ProductDetail = ({ id }) => {
               image: data.images?.[0],
               price: data.list_price
             })
-            // console.log(userFilter);
+            
             axios.put(urlUsers + '/' + userFilter.id, userFilter)
             alert('Đã thêm')
 
@@ -66,12 +66,14 @@ const ProductDetail = ({ id }) => {
   
   useEffect(async () => {
     const userLocal = JSON.parse(localStorage.getItem('data'))
-    const userFilter = await findUserByName(userLocal.username)
-    let sum = 0
-    userFilter.card.forEach((e) => {
-      sum += 1
-    });
-    $('.quantity-card').textContent = sum
+    if(userLocal){
+      const userFilter = await findUserByName(userLocal.username)
+      let sum = 0
+      userFilter.card.forEach((e) => {
+        sum += 1
+      });
+      $('.quantity-card').textContent = sum
+    }
   })
   return `
     ${Header()}

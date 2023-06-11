@@ -2,7 +2,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import Joi from "joi";
 import urlApi, { urlCate } from "../../../config/config";
-import { $, $$ } from "../../../utilities";
+import { $ } from "../../../utilities";
 import { router, useState, useEffect } from "../../../lib";
 
 const schema = Joi.object({

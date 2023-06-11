@@ -1,9 +1,9 @@
 import Joi from "joi"
 import { router, useEffect } from "../../lib"
-import { $, hashPassword } from "../../utilities"
+import { $, findUserByName, hashPassword } from "../../utilities"
 import axios from "axios"
 import { urlUsers } from "../../config/config"
-import bcrypt from 'bcryptjs';
+
 
 
 
@@ -19,7 +19,7 @@ const Signup = () => {
         const password = $(".password")
         const cfpassword = $('.cfpassword')
 
-        $('.signup').addEventListener('submit', (e) => {
+        $('.signup').addEventListener('submit', async(e) => {
             e.preventDefault();
             const user = {
                 username: username.value,
@@ -28,19 +28,19 @@ const Signup = () => {
             }
             const { error, value: { name } } = schema.validate(user)
 
-            const userStore = localStorage.getItem(user.username)
+            const dataFilter = await findUserByName(user.username)
+
             if (error) {
                 alert(error.message)
-            } else if (userStore != null) {
+            } else if (dataFilter) {
                 alert('Account đã tồn tại!')
             } else if (user.password != user.cfpassword) {
                 alert('Mật khẩu xác nhận không đúng!')
             } else {
                 hashPassword(user.password)
-                .then((data)=>{
-                    axios.post(urlUsers, {username: user.username, password: data, card: [], role: 0})
+                .then((hashPassword)=>{
+                    axios.post(urlUsers, {username: user.username, password: hashPassword, card: [], role: 0})
 
-                    localStorage.setItem(user.username, JSON.stringify(user))
                     alert('Đăng ký thành công, hãy đăng nhập!')
                     router.navigate('/')
                 })

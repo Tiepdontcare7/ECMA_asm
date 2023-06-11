@@ -1,6 +1,5 @@
 import axios from "axios";
-import Navigo from "navigo";
-const router = new Navigo("/", { linksSelector: "a", hash: true });
+import {router} from "../lib"
 import { urlUsers } from "../config/config";
 import bcrypt from 'bcryptjs';
 
@@ -91,18 +90,6 @@ const Validate = {
    },
 };
 
-function login(userLocal, user) {
-   return new Promise(function (resolve, reject) {
-      if (userLocal.username == user.username && userLocal.password == user.password) {
-         alert('Đăng nhập thành công!')
-         resolve(user)
-      } else {
-         alert('Sai tài khoản hoặc mật khẩu!')
-         reject()
-      }
-   })
-}
-
 function findUserByName(username) {
    return new Promise(function (resolve, reject) {
       axios.get(urlUsers)
@@ -113,6 +100,7 @@ function findUserByName(username) {
    })
 }
 
+
 function hashPassword(password) {
    return new Promise(function (resolve, reject) {
       bcrypt.hash(password, 10, function (err, hash) {
@@ -121,6 +109,21 @@ function hashPassword(password) {
             return;
          }
          resolve(hash)
+      })
+   })
+}
+function comparePassword(userFilter, user) {
+   return new Promise(function (resolve, reject) {
+      bcrypt.compare(user.password, userFilter.password, function (err, isMatch) {
+         if (err) {
+            console.error(err);
+            return;
+         }
+         if (isMatch) {
+            resolve(userFilter);
+         } else {
+            reject('Mật khẩu không chính xác! Kiểm tra lại!');
+         }
       })
    })
 }
@@ -134,4 +137,4 @@ async function updateQuantityCard() {
    });
    $('.quantity-card').textContent = sum
 }
-export { render, router, sortPrice, sortReduce, $, $$, navBar, Validate, login, findUserByName, hashPassword, updateQuantityCard };
+export { render, router, sortPrice, sortReduce, $, $$, navBar, Validate, findUserByName, hashPassword, comparePassword, updateQuantityCard };

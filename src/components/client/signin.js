@@ -1,6 +1,7 @@
-import { router, useEffect } from "../../lib"
-import { $, login } from "../../utilities"
+import { router, useEffect, useState } from "../../lib"
+import { $, findUserByName, comparePassword } from "../../utilities"
 import Joi from "joi"
+
 
 const schema = Joi.object({
     username: Joi.string().min(4),
@@ -8,11 +9,12 @@ const schema = Joi.object({
 })
 
 const Signin = () => {
+    
     useEffect(() => {
         const username = $(".username")
         const password = $(".password")
 
-        $('.signin').addEventListener('submit', (e) => {
+        $('.signin').addEventListener('submit', async (e) => {
             e.preventDefault();
             const user = {
                 username: username.value,
@@ -20,23 +22,24 @@ const Signin = () => {
             }
             const { error, value: { name } } = schema.validate(user)
 
-            const userLocal = localStorage.getItem(user.username)
+            const userFilter = await findUserByName(user.username)
 
             if (error) {
                 alert(error.message)
-            } else if (userLocal != null) {
-                const userLocalParse = JSON.parse(userLocal)
+            } else if (userFilter) {
 
-                login(userLocalParse, user)
+                comparePassword(userFilter, user)
                     .then((data) => {
+                        alert('Đăng nhập thành công!')
                         localStorage.setItem('data', JSON.stringify(data));
                         router.navigate('/')
                     })
                     .catch((error) => {
-                        console.log(error);
-                    })
+                        alert(error);
+                    });
+
             } else {
-                alert('Sai tài khoản or mật khẩu!')
+                alert('Tài khoản không chính xác! Kiểm tra lại')
             }
 
         }, [])

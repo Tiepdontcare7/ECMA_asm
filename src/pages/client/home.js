@@ -83,13 +83,15 @@ const HomePage = () => {
 
   useEffect(async () => {
     const userLocal = JSON.parse(localStorage.getItem('data'))
-    const userFilter = await findUserByName(userLocal.username)
-    let sum = 0
-    userFilter.card.forEach((e) => {
+    if(userLocal){
+      const userFilter = await findUserByName(userLocal.username)
+      let sum = 0
+      userFilter.card.forEach((e) => {
         sum += 1
-    });
-    $('.quantity-card').textContent = sum
-})
+      });
+      $('.quantity-card').textContent = sum
+    }
+  })
 
 
   return `

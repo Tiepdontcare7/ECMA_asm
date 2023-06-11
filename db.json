@@ -27,10 +27,30 @@
           "quantity": "1",
           "image": "https://salt.tikicdn.com/ts/product/82/82/80/c542073200c6e95d3e89840b2f41ce2e.jpg",
           "price": "138000"
+        },
+        {
+          "name": "Chó sủa nhầm cây - Tại sao những gì ta biết về thành công có khi lại sai",
+          "quantity": "1",
+          "image": "https://salt.tikicdn.com/ts/product/29/c6/6d/64243ee01d5a0786fdb3c3977ec9c63e.jpg",
+          "price": 150000
         }
       ],
       "role": 0,
       "id": 2
+    },
+    {
+      "username": "2222",
+      "password": "$2a$10$HPGYb4fWSgRc99etpZwfs.uF7HxqEBSXqOyOnaOZxRKBPc6Jgm/cm",
+      "card": [
+        {
+          "name": "Chó sủa nhầm cây - Tại sao những gì ta biết về thành công có khi lại sai",
+          "quantity": "1",
+          "image": "https://salt.tikicdn.com/ts/product/29/c6/6d/64243ee01d5a0786fdb3c3977ec9c63e.jpg",
+          "price": 150000
+        }
+      ],
+      "role": 0,
+      "id": 3
     }
   ],
   "category": [
@@ -57,13 +77,17 @@
     {
       "name": "truyện cười",
       "id": 9
+    },
+    {
+      "name": "ttttt",
+      "id": 10
     }
   ],
   "data": [
     {
       "name": "101 BÍ KÍP SỐNG",
       "description": "aChúng ta đang sống trong một thời đại vội vã, dường như mọi giao tiếp đều ở trên màn hình xanh, và dường như chúng ta thường quên đi những niềm vui giản dị, những ấm áp yêu thương, những cử chỉ chân t...",
-      "category": "8",
+      "category": "3",
       "short_description": "aChúng ta đang sống trong một thời đại vội vã, dường như mọi giao tiếp đều ở trên màn hình xanh, và dường như chúng ta thường quên đi những niềm vui giản dị, những ấm áp yêu thương, những cử chỉ chân t...",
       "list_price": "13800012",
       "original_price": "13800012",
