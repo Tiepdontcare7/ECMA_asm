@@ -50,18 +50,15 @@ const ProductDetail = ({ id }) => {
 
             const findName = userFilter.card.find(i => i.name == data.name);
             const findKhacName = userFilter.card.filter(i => i.name != data.name);
-            // console.log(findName);
-            // console.log(findKhacName);
 
             if (!findName) {
 
-              userFilter.card.push({
+              userFilter.card.unshift({
                 name: data.name,
                 quantity: $('.quantity').value,
                 image: data.images?.[0],
                 price: data.list_price
               })
-
               axios.put(urlUsers + '/' + userFilter.id, userFilter)
               alert('Đã add to giỏ!')
               updateQuantityCard()

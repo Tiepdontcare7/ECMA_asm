@@ -17,6 +17,12 @@
       "password": "$2a$10$fp73kmDXAaUOh1UrUAWE1utBO5CwTcNCc.9IWPumqbAVutCfmKXV6",
       "card": [
         {
+          "name": "Rừng Nauy (Tái Bản)",
+          "quantity": "1",
+          "image": "https://salt.tikicdn.com/ts/product/c9/e4/18/a9cfc425fa590c453f20307229804bb3.jpg",
+          "price": "150000"
+        },
+        {
           "name": "Sáng Tạo Không Giới Hạn Trong Kinh Doanh",
           "quantity": 7,
           "image": "https://salt.tikicdn.com/ts/product/93/28/53/c6b3299850c4af077f36ed73189620ad.jpg",
@@ -33,6 +39,12 @@
           "quantity": 3,
           "image": "https://salt.tikicdn.com/ts/product/29/c6/6d/64243ee01d5a0786fdb3c3977ec9c63e.jpg",
           "price": 150000
+        },
+        {
+          "name": "hihihiuuuyyuuy",
+          "quantity": "2",
+          "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.gy8_m13qDwE2iyvbEk9_WAHaJQ%26pid%3DApi&f=1&ipt=d79ed2fded040004a3decd3e37d33bdf932aef721224f28705efe3988daaf818&ipo=images",
+          "price": "12"
         }
       ],
       "role": 0,
