@@ -32,9 +32,10 @@ const Signin = () => {
                     .then((data) => {
                         if (data.role == 0) {
                             alert('Đăng nhập thành công!')
-                            localStorage.setItem('data', JSON.stringify(data));
+                            // localStorage.setItem('data', JSON.stringify(data)); 
+                            localStorage.setItem('data', JSON.stringify({ username: data.username }));
                             router.navigate('/')
-                        }else{
+                        } else {
                             alert('Bạn đã đăng nhập với tư cách quản trị viên!')
                             router.navigate('/admin/products')
                         }
@@ -68,7 +69,7 @@ const Signin = () => {
                 <label for="text" class="sr-only">Email</label>
 
                 <div class="relative">
-                <input
+                <input tabindex="0"
                     type="text"
                     class="username w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                     placeholder="Username"
@@ -80,7 +81,7 @@ const Signin = () => {
                 <label for="password" class="sr-only">Password</label>
 
                 <div class="relative">
-                <input
+                <input tabindex="1"
                     type="password"
                     class="password w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                     placeholder="Enter password"
