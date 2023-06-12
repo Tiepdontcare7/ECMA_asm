@@ -77,7 +77,7 @@ const ProductDetail = ({ id }) => {
                   ...findKhacName
                 ]
               }
-              console.log(data);
+              // console.log(data);
               axios.put(urlUsers + '/' + userFilter.id, data)
               // updateQuantityCard()
               alert('Sản phẩm đã có trong giỏ! Đã cập nhật quantity!')
