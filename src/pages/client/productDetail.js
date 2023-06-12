@@ -49,6 +49,9 @@ const ProductDetail = ({ id }) => {
             const userFilter = await findUserByName(userLocal.username)
 
             const findName = userFilter.card.find(i => i.name == data.name);
+            const findKhacName = userFilter.card.filter(i => i.name != data.name);
+            // console.log(findName);
+            // console.log(findKhacName);
 
             if (!findName) {
 
@@ -67,14 +70,17 @@ const ProductDetail = ({ id }) => {
 
               const data = {
                 ...userFilter,
-                card: [{
-                  name: userFilter.card[0].name,
-                  quantity: Number(userFilter.card[0].quantity) + Number($('.quantity').value),
-                  image: userFilter.card[0].image,
-                  price: userFilter.card[0].price,
-                }
+                card: [
+                  {
+                    name: findName.name,
+                    quantity: Number(findName.quantity) + Number($('.quantity').value),
+                    image: findName.image,
+                    price: findName.price,
+                  },
+                  ...findKhacName
                 ]
               }
+              console.log(data);
               axios.put(urlUsers + '/' + userFilter.id, data)
               // updateQuantityCard()
               alert('Sản phẩm đã có trong giỏ! Đã cập nhật quantity!')
