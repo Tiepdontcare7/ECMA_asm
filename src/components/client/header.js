@@ -106,7 +106,7 @@ const Header = () => {
               <ion-icon class="text-[28px]" name="bag-check-outline"></ion-icon>
             </a>
             <span
-              class="quantity-card text-black text-[11px] bg-yellow-500 rounded-full px-[4px] absolute top-[-17px] right-[2px] block">0</span>
+              class="text-white quantity-card text-black text-[11px] bg-yellow-500 rounded-full px-[4px] absolute top-[-17px] right-[2px] block">0</span>
           </span>
           <a href="#" class="card ml-1 text-[11px]">Giỏ hàng</a>
         </div>
