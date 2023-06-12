@@ -4,8 +4,6 @@ import { $, findUserByName, hashPassword } from "../../utilities"
 import axios from "axios"
 import { urlUsers } from "../../config/config"
 
-
-
 const schema = Joi.object({
     username: Joi.string().min(4).required(),
     password: Joi.string().min(4),

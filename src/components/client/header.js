@@ -17,6 +17,7 @@ const Header = () => {
   },[])
 
   useEffect(() => {
+    cm: // logout
     $('.out').onclick = () => {
       localStorage.removeItem('data');
       // router.navigate('/')

@@ -9,7 +9,7 @@ const schema = Joi.object({
 })
 
 const Signin = () => {
-    
+
     useEffect(() => {
         const username = $(".username")
         const password = $(".password")
@@ -30,9 +30,14 @@ const Signin = () => {
 
                 comparePassword(userFilter, user)
                     .then((data) => {
-                        alert('Đăng nhập thành công!')
-                        localStorage.setItem('data', JSON.stringify(data));
-                        router.navigate('/')
+                        if (data.role == 0) {
+                            alert('Đăng nhập thành công!')
+                            localStorage.setItem('data', JSON.stringify(data));
+                            router.navigate('/')
+                        }else{
+                            alert('Bạn đã đăng nhập với tư cách quản trị viên!')
+                            router.navigate('/admin/products')
+                        }
                     })
                     .catch((error) => {
                         alert(error);

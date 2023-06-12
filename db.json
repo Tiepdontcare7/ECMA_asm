@@ -1,50 +1,25 @@
 {
   "users": [
     {
-      "id": 1,
-      "role": 1,
       "username": "admin",
-      "password": 1234,
-      "card": [
-        {
-          "name": "101 BÍ KÍP SỐNG aa",
-          "quantity": 1
-        }
-      ]
+      "password": "$2a$10$vLNU2TKK6luUia/qBfUfCOHNR75CnrNd3OSHggDfNDOsdjcDwMy96",
+      "card": [],
+      "role": 1,
+      "id": 3
     },
     {
       "username": "1111",
       "password": "$2a$10$fp73kmDXAaUOh1UrUAWE1utBO5CwTcNCc.9IWPumqbAVutCfmKXV6",
       "card": [
         {
-          "name": "jjjjjjjjjjjjjjjjjjjjjjjjjjj2",
-          "quantity": 7,
-          "image": "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fhongbiencang.com%2Fimages%2Fnews%2F2018%2F06%2F14%2Fchf_11529009768.jpg&f=1&nofb=1&ipt=360a0d06e895a5d08f267c558da2983af4ac29ce840ec3559dd1b977c8fe43ec&ipo=images",
-          "price": "777"
-        },
-        {
           "name": "Sáng Tạo Không Giới Hạn Trong Kinh Doanh",
-          "quantity": "3",
+          "quantity": 10,
           "image": "https://salt.tikicdn.com/ts/product/93/28/53/c6b3299850c4af077f36ed73189620ad.jpg",
           "price": 96000
         }
       ],
       "role": 0,
       "id": 2
-    },
-    {
-      "username": "2222",
-      "password": "$2a$10$HPGYb4fWSgRc99etpZwfs.uF7HxqEBSXqOyOnaOZxRKBPc6Jgm/cm",
-      "card": [
-        {
-          "name": "101 BÍ KÍP SỐNG",
-          "quantity": 14,
-          "image": "https://salt.tikicdn.com/ts/product/82/82/80/c542073200c6e95d3e89840b2f41ce2e.jpg",
-          "price": "13800012"
-        }
-      ],
-      "role": 0,
-      "id": 3
     }
   ],
   "category": [
@@ -57,7 +32,7 @@
       "name": "Truyện, tiểu thuyết"
     },
     {
-      "name": "Kinh doanh",
+      "name": "Kinh doanh 2",
       "id": 3
     },
     {
@@ -71,20 +46,16 @@
     {
       "name": "truyện cười",
       "id": 9
-    },
-    {
-      "name": "ttttt",
-      "id": 10
     }
   ],
   "data": [
     {
       "name": "101 BÍ KÍP SỐNG",
       "description": "aChúng ta đang sống trong một thời đại vội vã, dường như mọi giao tiếp đều ở trên màn hình xanh, và dường như chúng ta thường quên đi những niềm vui giản dị, những ấm áp yêu thương, những cử chỉ chân t...",
-      "category": "3",
+      "category": "9",
       "short_description": "aChúng ta đang sống trong một thời đại vội vã, dường như mọi giao tiếp đều ở trên màn hình xanh, và dường như chúng ta thường quên đi những niềm vui giản dị, những ấm áp yêu thương, những cử chỉ chân t...",
-      "list_price": "13800012",
-      "original_price": "13800012",
+      "list_price": "1380001222",
+      "original_price": "1380001222",
       "images": [
         "https://salt.tikicdn.com/ts/product/82/82/80/c542073200c6e95d3e89840b2f41ce2e.jpg"
       ],
@@ -234,6 +205,18 @@
         "https://cdn.nguyenkimmall.com/images/detailed/555/may-anh-cho-nguoi-moi.jpg"
       ],
       "id": 32
+    },
+    {
+      "name": "poshssss",
+      "category": "7",
+      "description": "eeeeeeeeeeeeeeeeee",
+      "short_description": "eeeeeeeeeeeeeeeeee",
+      "list_price": "12",
+      "original_price": "12",
+      "images": [
+        "https://hanselmanblogcontent.azureedge.net/Windows-Live-Writer/Creating-the-Ultimate-PowerShell-prompt_11CD9/image_9f793bcd-61f2-424b-845b-46b63b2f37eb.png"
+      ],
+      "id": 33
     }
   ]
 }
