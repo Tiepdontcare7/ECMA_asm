@@ -1,9 +1,9 @@
-import axios from "axios";
-import Swal from "sweetalert2";
-import Joi from "joi";
-import urlApi, { urlCate } from "../../../config/config";
-import { $ } from "../../../utilities";
-import { router, useState, useEffect } from "../../../lib";
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import Joi from 'joi';
+import urlApi, { urlCate } from '../../../config/config';
+import { $ } from '../../../utilities';
+import { router, useState, useEffect } from '../../../lib';
 
 const schema = Joi.object({
     name: Joi.string().min(5),
@@ -13,32 +13,30 @@ const schema = Joi.object({
     list_price: Joi.number(),
     original_price: Joi.number(),
     images: Joi.array(),
-})
+});
 
 const AdminProductEdit = ({ id }) => {
     const [data, setData] = useState([]);
     const [cate, setCate] = useState([]);
 
     useEffect(() => {
-        axios.get(urlApi)
-            .then(({ data }) => {
-                const itemFilter = data.find(item => item.id === +id);
-                setData(itemFilter);
-            })
-        axios.get(urlCate)
-            .then(({ data }) => {
-                setCate(data);
-            });
+        axios.get(urlApi).then(({ data }) => {
+            const itemFilter = data.find((item) => item.id === +id);
+            setData(itemFilter);
+        });
+        axios.get(urlCate).then(({ data }) => {
+            setCate(data);
+        });
     }, []);
 
     useEffect(() => {
-        $(".editForm").addEventListener("submit", (e) => {
+        $('.editForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            const title = document.querySelector(".title");
-            const desc = document.querySelector(".description");
-            const price = document.querySelector(".price");
-            const image = document.querySelector(".image");
-            const cate = document.querySelector(".category");
+            const title = document.querySelector('.title');
+            const desc = document.querySelector('.description');
+            const price = document.querySelector('.price');
+            const image = document.querySelector('.image');
+            const cate = document.querySelector('.category');
             const put = {
                 name: title.value,
                 description: desc.value,
@@ -46,25 +44,28 @@ const AdminProductEdit = ({ id }) => {
                 short_description: desc.value,
                 list_price: price.value,
                 original_price: price.value,
-                images: image.value === "" ? ["https://picsum.photos/200/300"] : [image.value],
+                images: image.value === '' ? ['https://picsum.photos/200/300'] : [image.value],
             };
-            const {error, value: {name}} = schema.validate(put);
+            const {
+                error,
+                value: { name },
+            } = schema.validate(put);
             if (!error) {
-                axios.put(urlApi + "/" + id, put).then(() => {
+                axios.put(urlApi + '/' + id, put).then(() => {
                     Swal.fire({
                         icon: 'success',
                         title: 'Edit products successfully',
                         text: 'Something went wrong!',
                     }).then(() => {
-                        router.navigate('/admin/products')
-                    })
+                        router.navigate('/admin/products');
+                    });
                 });
-            }else{
+            } else {
                 Swal.fire({
                     icon: 'warning',
                     title: error.message,
                     text: 'Something went wrong!',
-                })
+                });
             }
         });
     });
@@ -107,13 +108,14 @@ const AdminProductEdit = ({ id }) => {
 
                 <div class="relative">
                     <select class="category w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm text-gray-500">
-                        <option value="${data.category}">${(cate.find(i => i.id == data.category))?.name
-        }</option>
-                        ${cate.map((i) => {
-            return `
+                        <option value="${data.category}">${cate.find((i) => i.id == data.category)?.name}</option>
+                        ${cate
+                            .map((i) => {
+                                return `
                                 <option value="${i.id}">${i.name}</option>
-                            `
-        }).join('')}
+                            `;
+                            })
+                            .join('')}
                     </select>
                 </div>
             </div>

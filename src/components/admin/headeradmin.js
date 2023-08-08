@@ -1,5 +1,5 @@
 const HeaderAdmin = () => {
-  return `
+    return `
         <header aria-label="Site Header" class="shadow-sm bg-blue-300">
         <div
             class="mx-auto flex h-16 max-w-screen-xl items-center justify-between px-4"

@@ -1,19 +1,17 @@
-import Footer from "../../components/client/footer"
-import Header from "../../components/client/header"
-import axios from 'axios'
-import urlApi from "../../config/config"
-import { $, sortPrice, sortReduce, navBar, findUserByName } from "../../utilities"
-import { useState, useEffect } from "../../lib"
+import Footer from '../../components/client/footer';
+import Header from '../../components/client/header';
+import axios from 'axios';
+import urlApi from '../../config/config';
+import { $, sortPrice, sortReduce, navBar, findUserByName } from '../../utilities';
+import { useState, useEffect } from '../../lib';
 
 const HomePage = () => {
-  axios.get(urlApi)
-    .then(({ data }) => {
+    axios.get(urlApi).then(({ data }) => {
+        navBar();
 
-      navBar()
-
-      const renderProduct = (data) => {
-        const html = data.map((item) => {
-          return `
+        const renderProduct = (data) => {
+            const html = data.map((item) => {
+                return `
               <div class="flex flex-col">
               <div class="mb-3 flex justify-center">
                 <a href="#/product/${item.id}">
@@ -34,7 +32,9 @@ const HomePage = () => {
                     <li><ion-icon name="star"></ion-icon></li>
                     <li><ion-icon name="star"></ion-icon></li>
                   </ul>
-                  <span class="text-[#787878] text-xs block border-l border-[#ccc] pl-2">Đã bán ${item?.quantity_sold?.value ?? 'API null'}</span>
+                  <span class="text-[#787878] text-xs block border-l border-[#ccc] pl-2">Đã bán ${
+                      item?.quantity_sold?.value ?? 'API null'
+                  }</span>
                 </div>
                 <div>
                   <span class="text-base text-red-600">${item.original_price} ₫</span>
@@ -46,55 +46,50 @@ const HomePage = () => {
               </div>
             </div>
             <!-- End Item -->
-            `
-        })
-        const products = document.querySelector('.products')
-        products.innerHTML = html.join('')
-      }
+            `;
+            });
+            const products = document.querySelector('.products');
+            products.innerHTML = html.join('');
+        };
 
-      $('.phobien').addEventListener('click', function () {
-        axios.get(urlApi)
-          .then(({ data }) => {
+        $('.phobien').addEventListener('click', function () {
+            axios.get(urlApi).then(({ data }) => {
+                setData(data);
+            });
+        });
+        $('.thap').addEventListener('click', function () {
+            sortPrice(data).then((data) => {
+                renderProduct(data);
+            });
+        });
+        $('.cao').addEventListener('click', function () {
+            sortReduce(data).then((data) => {
+                renderProduct(data);
+            });
+        });
+    });
+
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        axios.get(urlApi).then(({ data }) => {
             setData(data);
-          })
-      })
-      $('.thap').addEventListener('click', function () {
-        sortPrice(data)
-          .then((data) => {
-            renderProduct(data);
-          })
-      })
-      $('.cao').addEventListener('click', function () {
-        sortReduce(data)
-          .then((data) => {
-            renderProduct(data);
-          })
-      })
-    })
+        });
+    }, []);
 
-  const [data, setData] = useState([])
+    useEffect(async () => {
+        const userLocal = JSON.parse(localStorage.getItem('data'));
+        if (userLocal) {
+            const userFilter = await findUserByName(userLocal.username);
+            let sum = 0;
+            userFilter.card.forEach((e) => {
+                sum += 1;
+            });
+            $('.quantity-card').textContent = sum;
+        }
+    });
 
-  useEffect(() => {
-    axios.get(urlApi)
-      .then(({ data }) => {
-        setData(data);
-      })
-  }, [])
-
-  useEffect(async () => {
-    const userLocal = JSON.parse(localStorage.getItem('data'))
-    if(userLocal){
-      const userFilter = await findUserByName(userLocal.username)
-      let sum = 0
-      userFilter.card.forEach((e) => {
-        sum += 1
-      });
-      $('.quantity-card').textContent = sum
-    }
-  })
-
-
-  return `
+    return `
   ${Header()}
   <div class="bg-[#F5F5FA] flex items-center max-w-[1440px] mx-auto py-1 px-28">
     <div class="pr-[5px]">
@@ -154,8 +149,9 @@ const HomePage = () => {
 
         <div class="products grid grid-cols-4 gap-12">
         
-        ${data.map((item) => {
-    return `
+        ${data
+            .map((item) => {
+                return `
             <div class="flex flex-col">
               <div class="mb-3 flex justify-center">
                 <a data-navigo href="#/product/${item.id}">
@@ -176,7 +172,9 @@ const HomePage = () => {
                     <li><ion-icon name="star"></ion-icon></li>
                     <li><ion-icon name="star"></ion-icon></li>
                   </ul>
-                  <span class="text-[#787878] text-xs block border-l border-[#ccc] pl-2">Đã bán ${item?.quantity_sold?.value ?? 'API null'}</span>
+                  <span class="text-[#787878] text-xs block border-l border-[#ccc] pl-2">Đã bán ${
+                      item?.quantity_sold?.value ?? 'API null'
+                  }</span>
                 </div>
                 <div>
                   <span class="text-base text-red-600">${item.original_price} ₫</span>
@@ -188,17 +186,16 @@ const HomePage = () => {
               </div>
             </div>
         <!-- End Item -->
-          `
-  }).join('\n')}
+          `;
+            })
+            .join('\n')}
     
         </div>
       </div>
     </div>
 </section>
   ${Footer()}
-  `
-}
+  `;
+};
 
-
-
-export default HomePage
+export default HomePage;

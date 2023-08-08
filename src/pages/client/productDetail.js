@@ -1,106 +1,97 @@
-import Header from "../../components/client/header"
-import Footer from "../../components/client/footer"
-import urlApi, { urlUsers } from "../../config/config";
-import axios from "axios";
-import { useState, useEffect, router } from "../../lib";
-import { $, findUserByName, updateQuantityCard } from "../../utilities";
-
+import Header from '../../components/client/header';
+import Footer from '../../components/client/footer';
+import urlApi, { urlUsers } from '../../config/config';
+import axios from 'axios';
+import { useState, useEffect, router } from '../../lib';
+import { $, findUserByName, updateQuantityCard } from '../../utilities';
 
 const ProductDetail = ({ id }) => {
-  const [cate, setCate] = useState([])
-  const [data, setData] = useState([])
+    const [cate, setCate] = useState([]);
+    const [data, setData] = useState([]);
 
-  useEffect(() => {
-    axios.get(urlApi)
-      .then(({ data }) => {
-        const dataFilter = data.find(item => item.id === +id)
+    useEffect(() => {
+        axios.get(urlApi).then(({ data }) => {
+            const dataFilter = data.find((item) => item.id === +id);
 
-        if (dataFilter == undefined) router.navigate('/not')
-        setData(dataFilter)
+            if (dataFilter == undefined) router.navigate('/not');
+            setData(dataFilter);
 
-        const cate = data.filter(item => item.category === +dataFilter.category && item.id != dataFilter.id)
-        setCate(cate)
-      })
-  }, [])
+            const cate = data.filter((item) => item.category === +dataFilter.category && item.id != dataFilter.id);
+            setCate(cate);
+        });
+    }, []);
 
-
-  useEffect(() => {
-    //QUANTITY PRODUCT
-    const quantityInput = document.querySelector('.number');
-    document.querySelector('.add').addEventListener('click', () => {
-      quantityInput.value = parseInt(quantityInput.value) + 1;
+    useEffect(() => {
+        //QUANTITY PRODUCT
+        const quantityInput = document.querySelector('.number');
+        document.querySelector('.add').addEventListener('click', () => {
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        });
+        document.querySelector('.remove').addEventListener('click', () => {
+            const currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) quantityInput.value = currentValue - 1;
+        });
     });
-    document.querySelector('.remove').addEventListener('click', () => {
-      const currentValue = parseInt(quantityInput.value);
-      if (currentValue > 1) quantityInput.value = currentValue - 1;
+
+    useEffect(() => {
+        $('.add-card').addEventListener('click', () => {
+            const dataLocal = localStorage.getItem('data');
+
+            axios.get(urlUsers).then(async (ss) => {
+                if (dataLocal) {
+                    const userLocal = JSON.parse(dataLocal);
+
+                    const userFilter = await findUserByName(userLocal.username);
+
+                    const findName = userFilter.card.find((i) => i.name == data.name);
+                    const findKhacName = userFilter.card.filter((i) => i.name != data.name);
+
+                    if (!findName) {
+                        userFilter.card.unshift({
+                            name: data.name,
+                            quantity: $('.quantity').value,
+                            image: data.images?.[0],
+                            price: data.list_price,
+                        });
+                        axios.put(urlUsers + '/' + userFilter.id, userFilter);
+                        alert('Đã add to giỏ!');
+                        updateQuantityCard();
+                    } else {
+                        const data = {
+                            ...userFilter,
+                            card: [
+                                {
+                                    name: findName.name,
+                                    quantity: Number(findName.quantity) + Number($('.quantity').value),
+                                    image: findName.image,
+                                    price: findName.price,
+                                },
+                                ...findKhacName,
+                            ],
+                        };
+                        axios.put(urlUsers + '/' + userFilter.id, data);
+                        // updateQuantityCard()
+                        alert('Sản phẩm đã có trong giỏ! Đã cập nhật quantity!');
+                    }
+                } else {
+                    alert('Cần đăng nhập để mua hàng!');
+                }
+            });
+        });
     });
-  })
 
-  useEffect(() => {
-    $('.add-card').addEventListener('click', () => {
-
-      const dataLocal = localStorage.getItem('data');
-
-      axios.get(urlUsers)
-        .then(async (ss) => {
-          if (dataLocal) {
-            const userLocal = JSON.parse(dataLocal);
-
-            const userFilter = await findUserByName(userLocal.username)
-
-            const findName = userFilter.card.find(i => i.name == data.name);
-            const findKhacName = userFilter.card.filter(i => i.name != data.name);
-
-            if (!findName) {
-
-              userFilter.card.unshift({
-                name: data.name,
-                quantity: $('.quantity').value,
-                image: data.images?.[0],
-                price: data.list_price
-              })
-              axios.put(urlUsers + '/' + userFilter.id, userFilter)
-              alert('Đã add to giỏ!')
-              updateQuantityCard()
-
-            } else {
-
-              const data = {
-                ...userFilter,
-                card: [
-                  {
-                    name: findName.name,
-                    quantity: Number(findName.quantity) + Number($('.quantity').value),
-                    image: findName.image,
-                    price: findName.price,
-                  },
-                  ...findKhacName
-                ]
-              }
-              // console.log(data);
-              axios.put(urlUsers + '/' + userFilter.id, data)
-              // updateQuantityCard()
-              alert('Sản phẩm đã có trong giỏ! Đã cập nhật quantity!')
-            }
-          } else {
-            alert('Cần đăng nhập để mua hàng!')
-          }
-        })
-    })
-  })
-
-  useEffect(async () => {
-    const userLocal = JSON.parse(localStorage.getItem('data'))
-    if (userLocal) {
-      const userFilter = await findUserByName(userLocal.username)
-      let sum = 0
-      userFilter.card.forEach((e) => {
-        sum += 1
-      });
-      $('.quantity-card').textContent = sum
-    }
-  })
-  return `
+    useEffect(async () => {
+        const userLocal = JSON.parse(localStorage.getItem('data'));
+        if (userLocal) {
+            const userFilter = await findUserByName(userLocal.username);
+            let sum = 0;
+            userFilter.card.forEach((e) => {
+                sum += 1;
+            });
+            $('.quantity-card').textContent = sum;
+        }
+    });
+    return `
     ${Header()}
     <div class="path-bar bg-[#F5F5FA] flex items-center max-w-[1440px] mx-auto py-1 px-28">
       <div class="pr-[5px]">
@@ -140,15 +131,17 @@ const ProductDetail = ({ id }) => {
             </div>
             <ul class="grid grid-cols-5">
               
-              ${data.images?.map((img) => {
-    return `
+              ${data.images
+                  ?.map((img) => {
+                      return `
                   <li>
                     <a href="#">
                       <img class="w-[100px] h-[100px]" srcset="${img} 2x" alt="">
                     </a>
                   </li>
-                `
-  }).join('')}
+                `;
+                  })
+                  .join('')}
             </ul>
           </div>
 
@@ -177,7 +170,9 @@ const ProductDetail = ({ id }) => {
                   <li><ion-icon name="star"></ion-icon></li>
                 </ul>
                 <span class="text-[#787878] text-xs block">(Xem 2942 đánh giá)</span>
-                <span class="text-[#787878] text-xs block border-l border-[#ccc] pl-2">Đã bán ${data?.quantity_sold?.text ?? 'API null'}</span>
+                <span class="text-[#787878] text-xs block border-l border-[#ccc] pl-2">Đã bán ${
+                    data?.quantity_sold?.text ?? 'API null'
+                }</span>
               </div>
 
               <div class="bg-[#FAFAFA] pl-5 pt-5 pr-7 pb-10 mt-4">
@@ -208,8 +203,9 @@ const ProductDetail = ({ id }) => {
         <div class="mt-12">
           <span class="text-xl block mb-6">Sản Phẩm Tương Tự</span>
           <div class="grid grid-cols-6 gap-x-6">
-            ${cate.map((item) => {
-    return `
+            ${cate
+                .map((item) => {
+                    return `
                     <div>
                     <div>
                     <a href="#/product/${item.id}">
@@ -229,7 +225,9 @@ const ProductDetail = ({ id }) => {
                           <li><ion-icon name="star"></ion-icon></li>
                           <li><ion-icon name="star"></ion-icon></li>
                         </ul>
-                        <span class="text-[#787878] text-xs block border-l border-[#ccc] pl-2">Đã bán ${item?.quantity_sold?.text ?? 'API null'}</span>
+                        <span class="text-[#787878] text-xs block border-l border-[#ccc] pl-2">Đã bán ${
+                            item?.quantity_sold?.text ?? 'API null'
+                        }</span>
                       </div>
                       <div>
                         <span class="text-base text-red-600">${item.list_price} ₫</span>
@@ -241,8 +239,9 @@ const ProductDetail = ({ id }) => {
                     </div>
                   </div>
                   <!-- End Item -->
-              `
-  }).join('')}
+              `;
+                })
+                .join('')}
             
             
           </div>
@@ -301,7 +300,7 @@ const ProductDetail = ({ id }) => {
     </div>
     </section>
     ${Footer()}
-  `
-}
+  `;
+};
 
-export default ProductDetail
+export default ProductDetail;

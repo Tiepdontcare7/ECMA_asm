@@ -14,7 +14,7 @@ const Header = () => {
       const data = JSON.parse(dataSignin);
       setAcc(data.username)
     }
-  },[])
+  }, [])
 
   useEffect(() => {
     cm: // logout
@@ -28,7 +28,7 @@ const Header = () => {
       if (dataSignin == null) {
         alert('Bạn cần đăng nhập!')
         router.navigate('#/account/signin')
-      }else{
+      } else {
         router.navigate('#/card')
       }
 
@@ -37,29 +37,29 @@ const Header = () => {
 
   useEffect(() => {
     axios.get(urlApi)
-    .then(({data})=> {
+      .then(({ data }) => {
 
-      const inputNav = document.querySelector('.input-nav');
-      const searchNav = document.querySelector('.search-nav');
-  
-      inputNav.addEventListener('keyup', function (e) {
-        const dataFilter = data.filter((item) => item.name.toLowerCase().trim().includes(this.value.toLowerCase().trim()));
-        const html = dataFilter.map((item) => {
-          return `
+        const inputNav = document.querySelector('.input-nav');
+        const searchNav = document.querySelector('.search-nav');
+
+        inputNav.addEventListener('keyup', function (e) {
+          const dataFilter = data.filter((item) => item.name.toLowerCase().trim().includes(this.value.toLowerCase().trim()));
+          const html = dataFilter.map((item) => {
+            return `
               <li>
                 <a class="hover:bg-slate-100 text-sm hover:text-black block p-2" href="#/product/${item.id}">${item.name}</a>
               </li>
           `
-        }).join('')
-        searchNav.querySelector('ul').innerHTML = html;
-  
-        if (e.key === "Backspace" && this.value === '') {
-          searchNav.style.display = 'none';
-        } else {
-          searchNav.style.display = 'block';
-        }
+          }).join('')
+          searchNav.querySelector('ul').innerHTML = html;
+
+          if (e.key === "Backspace" && this.value === '') {
+            searchNav.style.display = 'none';
+          } else {
+            searchNav.style.display = 'block';
+          }
+        })
       })
-    })
   })
 
 

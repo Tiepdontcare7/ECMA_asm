@@ -1,51 +1,52 @@
-import axios from "axios";
-import Swal from "sweetalert2";
-import Joi from "joi";
-import { useEffect, useState, router } from "../../../lib";
-import { $ } from "../../../utilities";
-import { urlCate } from "../../../config/config";
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import Joi from 'joi';
+import { useEffect, useState, router } from '../../../lib';
+import { $ } from '../../../utilities';
+import { urlCate } from '../../../config/config';
 
 const scheme = Joi.object({
     name: Joi.string().trim().min(5).required(),
-})
+});
 
 const AdminCategoryEdit = ({ id }) => {
-    const [data, setData] = useState([])
+    const [data, setData] = useState([]);
     useEffect(() => {
-        axios.get(urlCate)
-            .then(({ data }) => {
-                const dataFilter = data.find(data => data.id === +id);
-                setData(dataFilter);
-            })
-    }, [])
+        axios.get(urlCate).then(({ data }) => {
+            const dataFilter = data.find((data) => data.id === +id);
+            setData(dataFilter);
+        });
+    }, []);
 
     useEffect(() => {
         $('.edit').addEventListener('submit', (e) => {
             e.preventDefault();
             const put = {
-                name: $('.category').value
-            }
-            const { error, value: { name } } = scheme.validate(put);
+                name: $('.category').value,
+            };
+            const {
+                error,
+                value: { name },
+            } = scheme.validate(put);
             if (!error) {
-                axios.put(urlCate + '/' + id, put)
-                    .then(() => {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Edit category successfully',
-                            text: 'Something went wrong!',
-                        }).then(() => {
-                            router.navigate('/admin/category')
-                        })
-                    })
+                axios.put(urlCate + '/' + id, put).then(() => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Edit category successfully',
+                        text: 'Something went wrong!',
+                    }).then(() => {
+                        router.navigate('/admin/category');
+                    });
+                });
             } else {
                 Swal.fire({
                     icon: 'warning',
                     title: error,
                     text: 'Something went wrong!',
-                })
+                });
             }
-        })
-    })
+        });
+    });
 
     return `
     <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
@@ -90,7 +91,7 @@ const AdminCategoryEdit = ({ id }) => {
             </form>
         </div>
         </div>
-  `
-}
+  `;
+};
 
-export default AdminCategoryEdit
+export default AdminCategoryEdit;

@@ -12,27 +12,14 @@
       "password": "$2a$10$fp73kmDXAaUOh1UrUAWE1utBO5CwTcNCc.9IWPumqbAVutCfmKXV6",
       "card": [
         {
-          "name": "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk uppbe",
-          "quantity": 6,
-          "image": "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F2.bp.blogspot.com%2F-sas1bTiQ83g%2FUE6sj6INuNI%2FAAAAAAAAA_Q%2FxCZ6uQxL7PA%2Fs1600%2Fanh%2B_girl_xinh_anh_gai_dep_trang1.jpg&f=1&nofb=1&ipt=818207c0f802347171ac4dfe05763cbebab6b7beddb086cc405863b93479abff&ipo=images",
-          "price": "5555"
-        },
-        {
-          "name": "Rừng Nauy (Tái Bản)",
+          "name": "Sáng Tạo Không Giới Hạn Trong Kinh Doanh",
           "quantity": "2",
-          "image": "https://salt.tikicdn.com/ts/product/c9/e4/18/a9cfc425fa590c453f20307229804bb3.jpg",
-          "price": "150000"
+          "image": "https://salt.tikicdn.com/ts/product/93/28/53/c6b3299850c4af077f36ed73189620ad.jpg",
+          "price": 96000
         }
       ],
       "role": 0,
       "id": 2
-    },
-    {
-      "username": "3333",
-      "password": "$2a$10$Jc0NV/Bv9aPKMuYMZtxOqe8YzAY.WYvC2UbFJPWBERErfbH1VynBm",
-      "card": [],
-      "role": 0,
-      "id": 4
     }
   ],
   "category": [
@@ -43,10 +30,6 @@
     {
       "id": 2,
       "name": "Truyện, tiểu thuyết"
-    },
-    {
-      "name": "Kinh doanh 2",
-      "id": 3
     },
     {
       "id": 4,
@@ -65,7 +48,7 @@
     {
       "name": "101 BÍ KÍP SỐNG",
       "description": "aChúng ta đang sống trong một thời đại vội vã, dường như mọi giao tiếp đều ở trên màn hình xanh, và dường như chúng ta thường quên đi những niềm vui giản dị, những ấm áp yêu thương, những cử chỉ chân t...",
-      "category": "9",
+      "category": "1",
       "short_description": "aChúng ta đang sống trong một thời đại vội vã, dường như mọi giao tiếp đều ở trên màn hình xanh, và dường như chúng ta thường quên đi những niềm vui giản dị, những ấm áp yêu thương, những cử chỉ chân t...",
       "list_price": "1380001222",
       "original_price": "1380001222",
@@ -184,7 +167,7 @@
       "id": 20
     },
     {
-      "name": "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk uppbe",
+      "name": "kkkkkkkkkkkkkk",
       "description": "kkkkkkkkkkkkkkkkkkkkkkkkk",
       "category": "5",
       "short_description": "kkkkkkkkkkkkkkkkkkkkkkkkk",
@@ -244,14 +227,14 @@
       "id": 34
     },
     {
-      "name": "bbbbbbbbbbb",
+      "name": "gggggggggggggggg222222222",
+      "description": "ttttttttttt",
       "category": "1",
-      "description": "ffffffffffffffff",
-      "short_description": "ffffffffffffffff",
-      "list_price": "5",
-      "original_price": "5",
+      "short_description": "ttttttttttt",
+      "list_price": "122",
+      "original_price": "122",
       "images": [
-        "https://plus.unsplash.com/premium_photo-1686257809551-9d11dd3b2625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=345&q=80"
+        "https://images.unsplash.com/photo-1685438531044-ef75606db89d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
       ],
       "id": 35
     }

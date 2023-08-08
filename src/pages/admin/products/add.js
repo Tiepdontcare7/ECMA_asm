@@ -1,62 +1,59 @@
-import urlApi, { urlCate } from "../../../config/config";
-import axios from "axios";
-import { $, $$, Validate } from "../../../utilities";
-import { router, useEffect, useState } from "../../../lib";
-import Swal from "sweetalert2";
+import urlApi, { urlCate } from '../../../config/config';
+import axios from 'axios';
+import { $, $$, Validate } from '../../../utilities';
+import { router, useEffect, useState } from '../../../lib';
+import Swal from 'sweetalert2';
 
 const AdminProductAdd = () => {
     const [cate, setCate] = useState([]);
 
     useEffect(() => {
-        axios.get(urlCate)
-            .then(({ data }) => {
-                setCate(data);
-            });
+        axios.get(urlCate).then(({ data }) => {
+            setCate(data);
+        });
     }, []);
 
     useEffect(() => {
-        Validate.isText(".title");
-        Validate.isText(".description");
-        Validate.isImage(".image");
+        Validate.isText('.title');
+        Validate.isText('.description');
+        Validate.isImage('.image');
 
-        $(".add").addEventListener("submit", (e) => {
+        $('.add').addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             const post = {
-                name: $(".title").value,
-                category: $(".category").value,
-                description: $(".description").value,
-                short_description: $(".description").value,
-                list_price: $(".price").value,
-                original_price: $(".price").value,
-                images: $(".image").value === "" ? ["https://picsum.photos/250/370"] : [$(".image").value],
+                name: $('.title').value,
+                category: $('.category').value,
+                description: $('.description').value,
+                short_description: $('.description').value,
+                list_price: $('.price').value,
+                original_price: $('.price').value,
+                images: $('.image').value === '' ? ['https://picsum.photos/250/370'] : [$('.image').value],
             };
 
             let check = true;
-            $$(".err").forEach((e) => {
-                if (e.textContent != "") {
+            $$('.err').forEach((e) => {
+                if (e.textContent != '') {
                     check = false;
                 }
             });
             if (check && post.name != '' && post.category != '') {
-                axios.post(urlApi, post)
-                .then(() => {
+                axios.post(urlApi, post).then(() => {
                     Swal.fire({
                         icon: 'success',
                         title: 'Add products successfully',
                         text: 'Something went wrong!',
                     }).then(() => {
-                        router.navigate('/admin/products')
-                    })
+                        router.navigate('/admin/products');
+                    });
                 });
             } else {
                 Swal.fire({
                     icon: 'warning',
                     title: 'Không được bỏ trống input!',
                     text: 'Something went wrong!',
-                })
+                });
             }
-
         });
     });
 
@@ -102,12 +99,12 @@ const AdminProductAdd = () => {
             <div class="relative">
             <select class="category w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm text-gray-500">
             ${cate
-            .map((i) => {
-                return ` 
+                .map((i) => {
+                    return ` 
                     <option value="${i.id}">${i.name}</option>
                     `;
-            })
-            .join("")}
+                })
+                .join('')}
             </select>
             </div>
         </div>

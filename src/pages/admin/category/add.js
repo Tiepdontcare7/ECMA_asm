@@ -1,44 +1,45 @@
-import axios from "axios";
-import Swal from "sweetalert2";
-import Joi from "joi";
-import { router, useEffect } from "../../../lib";
-import { $ } from "../../../utilities";
-import  { urlCate } from "../../../config/config";
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import Joi from 'joi';
+import { router, useEffect } from '../../../lib';
+import { $ } from '../../../utilities';
+import { urlCate } from '../../../config/config';
 
 const schema = Joi.object({
     name: Joi.string().trim().min(5).required(),
-})
+});
 
 const AdminCategoryAdd = () => {
     useEffect(() => {
         $('.add').addEventListener('submit', (e) => {
             e.preventDefault();
-            const category = $('.category')
+            const category = $('.category');
             const data = {
-                name: category.value
-            }
-            const {error, value: {name}} = schema.validate(data)
-    
+                name: category.value,
+            };
+            const {
+                error,
+                value: { name },
+            } = schema.validate(data);
+
             if (!error) {
-                axios.post(urlCate, data)
-                    .then(() => {
-                        Swal.fire({
-                            icon: 'success',
-                            title: `Add ${name} to category successfully`,
-                        }).then(() => {
-                            router.navigate('/admin/category')
-                        })
-                    })
+                axios.post(urlCate, data).then(() => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: `Add ${name} to category successfully`,
+                    }).then(() => {
+                        router.navigate('/admin/category');
+                    });
+                });
             } else {
                 Swal.fire({
                     icon: 'warning',
                     title: error.message,
                     text: 'Something went wrong!',
-                })
+                });
             }
         });
-
-    })
+    });
 
     return `
         <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">

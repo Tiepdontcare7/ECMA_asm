@@ -1,55 +1,57 @@
-import { router, useEffect } from "../../lib"
-import { $, findUserByName, comparePassword } from "../../utilities"
-import Joi from "joi"
-
+import { router, useEffect } from '../../lib';
+import { $, findUserByName, comparePassword } from '../../utilities';
+import Joi from 'joi';
 
 const schema = Joi.object({
     username: Joi.string().min(4),
     password: Joi.string().min(4),
-})
+});
 
 const Signin = () => {
-
     useEffect(() => {
-        const username = $(".username")
-        const password = $(".password")
+        const username = $('.username');
+        const password = $('.password');
 
-        $('.signin').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const user = {
-                username: username.value,
-                password: password.value,
-            }
-            const { error, value: { name } } = schema.validate(user)
+        $('.signin').addEventListener(
+            'submit',
+            async (e) => {
+                e.preventDefault();
+                const user = {
+                    username: username.value,
+                    password: password.value,
+                };
+                const {
+                    error,
+                    value: { name },
+                } = schema.validate(user);
 
-            const userFilter = await findUserByName(user.username)
+                const userFilter = await findUserByName(user.username);
 
-            if (error) {
-                alert(error.message)
-            } else if (userFilter) {
-
-                comparePassword(userFilter, user)
-                    .then((data) => {
-                        if (data.role == 0) {
-                            alert('Đăng nhập thành công!')
-                            // localStorage.setItem('data', JSON.stringify(data)); 
-                            localStorage.setItem('data', JSON.stringify({ username: data.username }));
-                            router.navigate('/')
-                        } else {
-                            alert('Bạn đã đăng nhập với tư cách quản trị viên!')
-                            router.navigate('/admin/products')
-                        }
-                    })
-                    .catch((error) => {
-                        alert(error);
-                    });
-
-            } else {
-                alert('Tài khoản không chính xác! Kiểm tra lại')
-            }
-
-        }, [])
-    })
+                if (error) {
+                    alert(error.message);
+                } else if (userFilter) {
+                    comparePassword(userFilter, user)
+                        .then((data) => {
+                            if (data.role == 0) {
+                                alert('Đăng nhập thành công!');
+                                // localStorage.setItem('data', JSON.stringify(data));
+                                localStorage.setItem('data', JSON.stringify({ username: data.username }));
+                                router.navigate('/');
+                            } else {
+                                alert('Bạn đã đăng nhập với tư cách quản trị viên!');
+                                router.navigate('/admin/products');
+                            }
+                        })
+                        .catch((error) => {
+                            alert(error);
+                        });
+                } else {
+                    alert('Tài khoản không chính xác! Kiểm tra lại');
+                }
+            },
+            [],
+        );
+    });
     return `
         <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-lg">
@@ -102,7 +104,7 @@ const Signin = () => {
         </div>
         </div>
 
-  `
-}
+  `;
+};
 
-export default Signin
+export default Signin;

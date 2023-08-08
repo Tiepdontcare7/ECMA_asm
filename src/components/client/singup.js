@@ -1,51 +1,51 @@
-import Joi from "joi"
-import { router, useEffect } from "../../lib"
-import { $, findUserByName, hashPassword } from "../../utilities"
-import axios from "axios"
-import { urlUsers } from "../../config/config"
+import Joi from 'joi';
+import { router, useEffect } from '../../lib';
+import { $, findUserByName, hashPassword } from '../../utilities';
+import axios from 'axios';
+import { urlUsers } from '../../config/config';
 
 const schema = Joi.object({
     username: Joi.string().min(4).required(),
     password: Joi.string().min(4),
-    cfpassword: Joi.string().min(4)
-})
+    cfpassword: Joi.string().min(4),
+});
 
 const Signup = () => {
     useEffect(() => {
-        const username = $(".username")
-        const password = $(".password")
-        const cfpassword = $('.cfpassword')
+        const username = $('.username');
+        const password = $('.password');
+        const cfpassword = $('.cfpassword');
 
-        $('.signup').addEventListener('submit', async(e) => {
+        $('.signup').addEventListener('submit', async (e) => {
             e.preventDefault();
             const user = {
                 username: username.value,
                 password: password.value,
-                cfpassword: cfpassword.value
-            }
-            const { error, value: { name } } = schema.validate(user)
+                cfpassword: cfpassword.value,
+            };
+            const {
+                error,
+                value: { name },
+            } = schema.validate(user);
 
-            const dataFilter = await findUserByName(user.username)
+            const dataFilter = await findUserByName(user.username);
 
             if (error) {
-                alert(error.message)
+                alert(error.message);
             } else if (dataFilter) {
-                alert('Account đã tồn tại!')
+                alert('Account đã tồn tại!');
             } else if (user.password != user.cfpassword) {
-                alert('Mật khẩu xác nhận không đúng!')
+                alert('Mật khẩu xác nhận không đúng!');
             } else {
-                hashPassword(user.password)
-                .then((hashPassword)=>{
-                    axios.post(urlUsers, {username: user.username, password: hashPassword, card: [], role: 0})
+                hashPassword(user.password).then((hashPassword) => {
+                    axios.post(urlUsers, { username: user.username, password: hashPassword, card: [], role: 0 });
 
-                    alert('Đăng ký thành công, hãy đăng nhập!')
-                    router.navigate('/')
-                })
-
-
+                    alert('Đăng ký thành công, hãy đăng nhập!');
+                    router.navigate('/');
+                });
             }
-        })
-    }, [])
+        });
+    }, []);
     return `
         <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-lg">
@@ -108,7 +108,7 @@ const Signup = () => {
         </div>
         </div>
 
-  `
-}
+  `;
+};
 
-export default Signup
+export default Signup;

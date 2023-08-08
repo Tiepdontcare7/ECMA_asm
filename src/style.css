@@ -28,7 +28,6 @@ html {
     word-break: break-word;
 }
 
-
 /* Table detail */
 .striped-table {
     min-width: 888px;
@@ -44,9 +43,9 @@ html {
 }
 
 .striped-table th {
-    background-color: #EFEFEF;
+    background-color: #efefef;
     width: 222px;
-    color: #4F4F4F;
+    color: #4f4f4f;
     font-size: 15px;
     font-weight: 400;
     padding: 10px 15px;
@@ -62,7 +61,7 @@ html {
 
 table td,
 th {
-    border: 1px solid #4F4F4F;
+    border: 1px solid #4f4f4f;
     padding: 20px;
 }
 

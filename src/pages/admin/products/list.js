@@ -7,21 +7,19 @@ import { useState, useEffect, router } from '../../../lib';
 import Swal from 'sweetalert2';
 
 const AdminProducts = () => {
-    const [data, setData] = useState([])
-    const [cate, setCate] = useState([])
+    const [data, setData] = useState([]);
+    const [cate, setCate] = useState([]);
     useEffect(() => {
-        axios.get(urlApi)
-            .then(({ data }) => {
-                setData(data);
-            })
-    }, [])
+        axios.get(urlApi).then(({ data }) => {
+            setData(data);
+        });
+    }, []);
 
     useEffect(() => {
-        axios.get(urlCate)
-            .then(({ data }) => {
-                setCate(data)
-            })
-    }, [])
+        axios.get(urlCate).then(({ data }) => {
+            setCate(data);
+        });
+    }, []);
 
     useEffect(() => {
         $$('.delete').forEach((btn) => {
@@ -33,39 +31,30 @@ const AdminProducts = () => {
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Yes, delete it!',
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        axios.delete(urlApi + '/' + `${this.dataset.id}`)
-                            .then(() => {
-                                Swal.fire(
-                                    'Deleted!',
-                                    'Your file has been deleted.',
-                                    'success'
-                                ).then(() => {
-                                    router.navigate('/admin/products')
-                                })
-                            })
+                        axios.delete(urlApi + '/' + `${this.dataset.id}`).then(() => {
+                            Swal.fire('Deleted!', 'Your file has been deleted.', 'success').then(() => {
+                                router.navigate('/admin/products');
+                            });
+                        });
                     }
-                })
-            })
-        })
-    })
+                });
+            });
+        });
+    });
 
     useEffect(() => {
         $('#form-search').addEventListener('submit', (e) => {
             e.preventDefault();
-            const valueInput = $('.search-admin').value
-            axios.get(urlApi)
-                .then(({ data }) => {
-                    const datafilter = data.filter(data => data.name.toLowerCase().includes(valueInput.toLowerCase()));
-                    setData(datafilter)
-                })
-
-        })
-    })
-
-
+            const valueInput = $('.search-admin').value;
+            axios.get(urlApi).then(({ data }) => {
+                const datafilter = data.filter((data) => data.name.toLowerCase().includes(valueInput.toLowerCase()));
+                setData(datafilter);
+            });
+        });
+    });
 
     return `
     ${HeaderAdmin()}
@@ -84,13 +73,20 @@ const AdminProducts = () => {
             </tr>
         </thead>
         <tbody>
-            ${data.map((item) => {
-                return `
+            ${data
+                .map((item) => {
+                    return `
                     <tr>
                         <th>${item.id}</th>
                         <td>${item.name}</td>
                         <td>
-                            ${(cate.find(i => { return i.id == item.category }))?.name == undefined ? 'undefined' : (cate.find(i => i.id == item.category))?.name }
+                            ${
+                                cate.find((i) => {
+                                    return i.id == item.category;
+                                })?.name == undefined
+                                    ? 'undefined'
+                                    : cate.find((i) => i.id == item.category)?.name
+                            }
                         </td>
                         <td>${item.short_description || item.description}</td>
                         <td>${item.original_price}</td>
@@ -100,12 +96,12 @@ const AdminProducts = () => {
                             </a>
                             <button data-id="${item.id}" class="delete">Xóa</button>
                         </td>
-                    </tr>`
-    }).join('')
-        }
+                    </tr>`;
+                })
+                .join('')}
         </tbody>
     </table>
-  `
-}
+  `;
+};
 
-export default AdminProducts
+export default AdminProducts;

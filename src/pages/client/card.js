@@ -1,50 +1,48 @@
-import { useEffect, useState } from "../../lib"
-import { findUserByName, $, $$ } from "../../utilities"
-import Header from "../../components/client/header"
-import axios from "axios"
-import { urlUsers } from "../../config/config"
+import { useEffect, useState } from '../../lib';
+import { findUserByName, $, $$ } from '../../utilities';
+import Header from '../../components/client/header';
+import axios from 'axios';
+import { urlUsers } from '../../config/config';
 
 const Card = () => {
-  const [data, setData] = useState([])
+    const [data, setData] = useState([]);
 
-  useEffect(async () => {
-    const userLocal = JSON.parse(localStorage.getItem('data'))
-    const userFilter = await findUserByName(userLocal.username)
+    useEffect(async () => {
+        const userLocal = JSON.parse(localStorage.getItem('data'));
+        const userFilter = await findUserByName(userLocal.username);
 
-    setData(userFilter.card)
-  }, [])
+        setData(userFilter.card);
+    }, []);
 
-  useEffect(async () => {
-    const userLocal = JSON.parse(localStorage.getItem('data'))
-    const userFilter = await findUserByName(userLocal.username)
-    let sum = 0
-    userFilter.card.forEach((e) => {
-      sum += 1
+    useEffect(async () => {
+        const userLocal = JSON.parse(localStorage.getItem('data'));
+        const userFilter = await findUserByName(userLocal.username);
+        let sum = 0;
+        userFilter.card.forEach((e) => {
+            sum += 1;
+        });
+        $('.quantity-card').textContent = sum;
+
+        //Tổng price
+        cm: $('.price').textContent = data.reduce((sum, e) => sum + Number(e.price * e.quantity), 0);
     });
-    $('.quantity-card').textContent = sum
 
-    cm: //Tổng price
-    $('.price').textContent = data.reduce((sum, e) => sum + Number(e.price * e.quantity), 0)
-  })
+    useEffect(async () => {
+        const userLocal = JSON.parse(localStorage.getItem('data'));
+        const userFilter = await findUserByName(userLocal.username);
 
-  useEffect(async() => {
+        $$('.delete').forEach((btn) => {
+            btn.onclick = function () {
+                const index = this.dataset.index;
+                userFilter.card.splice(index, 1);
 
-    const userLocal = JSON.parse(localStorage.getItem('data'))
-    const userFilter = await findUserByName(userLocal.username)
+                axios.put(urlUsers + '/' + userFilter.id, userFilter);
+                setData(userFilter.card);
+            };
+        });
+    });
 
-    $$('.delete').forEach((btn) => {
-      btn.onclick = function () {
-        const index = this.dataset.index
-        userFilter.card.splice(index, 1)
-        
-        axios.put(urlUsers+ '/' + userFilter.id , userFilter )
-        setData(userFilter.card)
-      }
-    })
-
-  })
-
-  return `
+    return `
   ${Header()}
     <div class="overflow-x-auto">
       <table class="min-w-full my-10 divide-y-2 divide-gray-200 bg-white text-sm">
@@ -67,8 +65,9 @@ const Card = () => {
         </thead>
 
         <tbody class="divide-y divide-gray-200">
-        ${data.map((item, index) => {
-    return `
+        ${data
+            .map((item, index) => {
+                return `
             <tr>
               <td class="text-center whitespace-nowrap py-2 text-gray-900">
                 <img class="w-full max-w-[150px] block mx-auto" src="${item.image}"/>
@@ -82,20 +81,22 @@ const Card = () => {
                 </button>
               </td>
             </tr>
-          `
-  }).join('')
-
-    }
+          `;
+            })
+            .join('')}
 
         </tbody>
       </table>
 
-      ${data.length == 0 ? `
+      ${
+          data.length == 0
+              ? `
         <div class="py-10">
           <img class="block mx-auto" src="https://bizweb.dktcdn.net/100/320/202/themes/714916/assets/empty-cart.png?1650292912948" />
         </div>
-        ` : ''
-    }
+        `
+              : ''
+      }
 
       <div class="border-t border-[#ccc]">
         <span>Cái giá phải trả: </span>
@@ -104,7 +105,7 @@ const Card = () => {
       <button>Thanh toán</button>
     </div>
 
-  `
-}
+  `;
+};
 
-export default Card
+export default Card;

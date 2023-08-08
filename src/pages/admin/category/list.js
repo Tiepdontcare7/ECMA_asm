@@ -1,52 +1,45 @@
-import axios from "axios"
-import HeaderAdmin from "../../../components/admin/headeradmin"
-import { useEffect, useState, router } from "../../../lib"
-import { urlCate } from "../../../config/config"
-import { $$ } from "../../../utilities"
+import axios from 'axios';
+import HeaderAdmin from '../../../components/admin/headeradmin';
+import { useEffect, useState, router } from '../../../lib';
+import { urlCate } from '../../../config/config';
+import { $$ } from '../../../utilities';
 
-import Swal from "sweetalert2"
+import Swal from 'sweetalert2';
 
 const AdminCategory = () => {
-  const [data, setData] = useState([])
-  useEffect(() => {
-    axios.get(urlCate)
-      .then(({ data }) => {
-        setData(data)
-      })
-  }, [])
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        axios.get(urlCate).then(({ data }) => {
+            setData(data);
+        });
+    }, []);
 
-  useEffect(() => {
-    $$('.delete').forEach((btn) => {
-      btn.addEventListener('click', function (e) {
-        e.preventDefault()
-        Swal.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            axios.delete(urlCate + '/' + `${this.dataset.id}`)
-              .then(() => {
-                Swal.fire(
-                  'Deleted!',
-                  'Your file has been deleted.',
-                  'success'
-                ).then(()=>{
-                  router.navigate('/admin/category')
-                })
-              })
-          }
-        })
-      })
-    })
+    useEffect(() => {
+        $$('.delete').forEach((btn) => {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        axios.delete(urlCate + '/' + `${this.dataset.id}`).then(() => {
+                            Swal.fire('Deleted!', 'Your file has been deleted.', 'success').then(() => {
+                                router.navigate('/admin/category');
+                            });
+                        });
+                    }
+                });
+            });
+        });
+    });
 
-  })
-
-  return `
+    return `
     ${HeaderAdmin()}
     <div class="overflow-x-auto">
       <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
@@ -63,8 +56,9 @@ const AdminCategory = () => {
         </thead>
 
         <tbody class="divide-y divide-gray-200">
-          ${data.map(e => {
-            return `
+          ${data
+              .map((e) => {
+                  return `
                 <tr>
                   <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                     ${e.id}
@@ -79,9 +73,9 @@ const AdminCategory = () => {
                     </a>
                   </td>
                 </tr>
-              `
-  }).join('')
-    }
+              `;
+              })
+              .join('')}
         </tbody>
       </table>
       <div class="float-right mt-5">
@@ -91,7 +85,7 @@ const AdminCategory = () => {
       </div>
     </div>
 
-  `
-}
+  `;
+};
 
-export default AdminCategory
+export default AdminCategory;
