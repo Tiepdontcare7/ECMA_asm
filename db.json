@@ -1,0 +1,242 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "password": "$2a$10$vLNU2TKK6luUia/qBfUfCOHNR75CnrNd3OSHggDfNDOsdjcDwMy96",
+      "card": [],
+      "role": 1,
+      "id": 3
+    },
+    {
+      "username": "1111",
+      "password": "$2a$10$fp73kmDXAaUOh1UrUAWE1utBO5CwTcNCc.9IWPumqbAVutCfmKXV6",
+      "card": [
+        {
+          "name": "Sáng Tạo Không Giới Hạn Trong Kinh Doanh",
+          "quantity": "2",
+          "image": "https://salt.tikicdn.com/ts/product/93/28/53/c6b3299850c4af077f36ed73189620ad.jpg",
+          "price": 96000
+        }
+      ],
+      "role": 0,
+      "id": 2
+    }
+  ],
+  "category": [
+    {
+      "name": "Tiểu thuyết",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Truyện, tiểu thuyết"
+    },
+    {
+      "id": 4,
+      "name": "Trinh Thám"
+    },
+    {
+      "name": "robert update",
+      "id": 7
+    },
+    {
+      "name": "truyện cười",
+      "id": 9
+    }
+  ],
+  "data": [
+    {
+      "name": "101 BÍ KÍP SỐNG",
+      "description": "aChúng ta đang sống trong một thời đại vội vã, dường như mọi giao tiếp đều ở trên màn hình xanh, và dường như chúng ta thường quên đi những niềm vui giản dị, những ấm áp yêu thương, những cử chỉ chân t...",
+      "category": "1",
+      "short_description": "aChúng ta đang sống trong một thời đại vội vã, dường như mọi giao tiếp đều ở trên màn hình xanh, và dường như chúng ta thường quên đi những niềm vui giản dị, những ấm áp yêu thương, những cử chỉ chân t...",
+      "list_price": "1380001222",
+      "original_price": "1380001222",
+      "images": [
+        "https://salt.tikicdn.com/ts/product/82/82/80/c542073200c6e95d3e89840b2f41ce2e.jpg"
+      ],
+      "id": 1
+    },
+    {
+      "name": "101 BÍ KÍP SỐNG SÓT NƠI CÔNG SỞ-Vừa sửa xong",
+      "description": "Chúng ta đang sống trong một thời đại vội vã, dường như mọi giao tiếp đều ở trên màn hình xanh, và dường như chúng ta thường quên đi những niềm vui giản dị, những ấm áp yêu thương, những cử chỉ chân t...",
+      "category": "3",
+      "short_description": "Chúng ta đang sống trong một thời đại vội vã, dường như mọi giao tiếp đều ở trên màn hình xanh, và dường như chúng ta thường quên đi những niềm vui giản dị, những ấm áp yêu thương, những cử chỉ chân t...",
+      "list_price": "138000",
+      "original_price": "138000",
+      "images": [
+        "https://salt.tikicdn.com/ts/product/82/82/80/c542073200c6e95d3e89840b2f41ce2e.jpg"
+      ],
+      "id": 2
+    },
+    {
+      "id": 3,
+      "category": 3,
+      "description": "<p><strong><span style=\"font-size: 14px;\">*** Nội dung phiên bản tái bản không có thay đổi so với phiên bản đầu, chỉ thay đổi format và số đăng ký năm theo Luật Xuất Bản ***</span></strong></p>\n<p><span style=\"font-size: 14px;\">---------------------------------------</span></p>\n<p><span style=\"font-size: 14px;\">Bạn có biết:</span></p>\n<p><span style=\"font-size: 14px;\">- Các thủ khoa hiếm khi trở thành triệu phú, và nhược điểm lớn nhất có khi lại là ưu điểm tuyệt vời nhất mà ai ai cũng khao khát sở hữu.</span></p>\n<p><span style=\"font-size: 14px;\">- Ở công ty, sự chăm chỉ đang bị thổi phồng quá mức, còn những trò nịnh bợ lại thường mang đến kết quả tốt, và liệu đề cao chính nghĩa hay sa vào tà đạo mới là con đường dẫn đến thành công?</span></p>\n<p><span style=\"font-size: 14px;\">- Những người lính Navy SEAL và những nhân viên bán bảo hiểm có một điểm chung quan trọng, và cách sử dụng nguyên tắc WNGF trong thiết kế trò chơi để biến đống bài tập chán ngắt thành những trò chơi hấp dẫn. </span></p>\n<p><span style=\"font-size: 14px;\">Rất nhiều lời khuyên về thành công rất logic, đầy cảm hứng, và sai bét. Bằng cách nhìn qua lăng kính khoa học để xem những người cực kỳ thành công khác với mình ở những điểm nào, ta học được cách để trở nên giống họ—và nhận ra trong vài trường hợp, không được như họ hóa ra lại tốt hơn.</span></p>\n<p> </p>\n<p>CHÓ SỦA NHẦM CÂY - BARKING UP THE WRONG TREE - là quyển sách gây tiếng vang, liên tục nằm trong danh sách bestseller Amazon của tác giả kiêm chủ trang blog Barking up the wrong tree - Eric Barker. Xuyên suốt nội dung sách, Eric sẽ cùng chúng ta lý giải một cách đầy hóm hỉnh nhưng không kém phần chặt chẽ những quan niệm khác nhau về thành công từ trước đến nay. Và ở cuối con đường đó, mỗi người chúng ta sẽ tự tìm thấy ngưỡng cửa thành công cho riêng mình.</p><p>Giá sản phẩm trên Tiki đã bao gồm thuế theo luật hiện hành. Bên cạnh đó, tuỳ vào loại sản phẩm, hình thức và địa chỉ giao hàng mà có thể phát sinh thêm chi phí khác như phí vận chuyển, phụ phí hàng cồng kềnh, thuế nhập khẩu (đối với đơn hàng giao từ nước ngoài có giá trị trên 1 triệu đồng).....</p>",
+      "images": [
+        "https://salt.tikicdn.com/ts/product/29/c6/6d/64243ee01d5a0786fdb3c3977ec9c63e.jpg",
+        "https://salt.tikicdn.com/ts/product/fe/a7/bc/124b200ee6602ca58f69ad0e7f30e8d4.jpg"
+      ],
+      "list_price": 150000,
+      "name": "Chó sủa nhầm cây - Tại sao những gì ta biết về thành công có khi lại sai",
+      "original_price": 150000,
+      "quantity_sold": {
+        "text": "Đã bán 1000+",
+        "value": 5869
+      },
+      "rating_average": 4.8,
+      "short_description": "*** Nội dung phiên bản tái bản không có thay đổi so với phiên bản đầu, chỉ thay đổi format và số đăng ký năm theo Luật Xuất Bản ***---------------------------------------Bạn có biết:- Các thủ khoa ..."
+    },
+    {
+      "id": 4,
+      "category": 2,
+      "description": "<p><strong>Sáng Tạo Không Giới Hạn Trong Kinh Doanh</strong></p>\n<p> </p>\n<p><span style=\"font-weight: 400;\">“…Đôi khi, thành công phụ thuộc vào một cái gì đó bên trong mỗi chúng ta, không phải là kết quả của việc nhiều tiền bạc, khả năng hô hào hay bằng cấp…”</span></p>\n<p> </p>\n<p><span style=\"font-weight: 400;\">Tác phẩm “Sáng Tạo Không Giới Hạn Trong Kinh Doanh” nói về những bí quyết trong khởi nghiệp, kinh doanh và bí mật thành công trong cuộc sống của nhà xuất khẩu nông sản - Chủ Tịch Phúc Sinh Group Phan Minh Thông. </span></p>\n<p><img style=\"display: block; margin-left: auto; margin-right: auto;\" title=\"\" src=\"https://salt.tikicdn.com/ts/tmp/22/cb/39/698d1fa6b23b78238ada9fc5c11de10c.png\" alt=\"\" width=\"584\" height=\"584\" /></p>\n<p><span style=\"font-weight: 400;\"><br />Tác phẩm dày gần 300 trang, có phụ lục nhiều hình ảnh đẹp trích xuất từ bộ sưu tập nghệ thuật của chính tác giả với 24 bài viết dạng tản văn - truyện kể, 6 bài phỏng vấn, chia sẻ, viết về doanh nhân Phan Minh Thông.</span></p>\n<p> </p>\n<p><span style=\"font-weight: 400;\">Theo tác giả/Doanh Nhân Phan Minh Thông chia sẻ, tác phẩm “Sáng tạo không giới hạn trong kinh doanh” được anh viết trong 5 năm, xuất phát từ những cảm xúc thực tế với các chuyến đi công tác trong - ngoài nước, từ những câu chuyện làm ăn, kinh doanh và quan sát cuộc sống đến việc thực nghiệm chính bản thân anh trong niềm đam mê khám phá nghệ thuật ở cả hai giác độ: Sưu tập và sáng tạo.</span></p>\n<p><img style=\"display: block; margin-left: auto; margin-right: auto;\" title=\"\" src=\"https://salt.tikicdn.com/ts/tmp/8a/ab/ae/87408d13d89e2969178740adb456ba19.png\" alt=\"\" width=\"567\" height=\"567\" /></p>\n<p><span style=\"font-weight: 400;\"><br />Tác phẩm: Sáng Tạo Không Giới Hạn Trong Kinh Doanh</span></p>\n<p><span style=\"font-weight: 400;\">Tác giả: Phan Minh Thông</span></p>\n<p><span style=\"font-weight: 400;\">Số trang: 284 trang</span></p>\n<p><span style=\"font-weight: 400;\">Nội dung tổng quát: nói về những bí quyết trong khởi nghiệp, kinh doanh và bí mật thành công trong cuộc sống của nhà xuất khẩu nông sản Phan Minh Thông.</span></p><p>Giá sản phẩm trên Tiki đã bao gồm thuế theo luật hiện hành. Bên cạnh đó, tuỳ vào loại sản phẩm, hình thức và địa chỉ giao hàng mà có thể phát sinh thêm chi phí khác như phí vận chuyển, phụ phí hàng cồng kềnh, thuế nhập khẩu (đối với đơn hàng giao từ nước ngoài có giá trị trên 1 triệu đồng).....</p>",
+      "images": [
+        "https://salt.tikicdn.com/ts/product/93/28/53/c6b3299850c4af077f36ed73189620ad.jpg",
+        "https://salt.tikicdn.com/ts/product/31/06/a5/791469af9457325062a7e16bfca5664d.jpg"
+      ],
+      "list_price": 96000,
+      "name": "Sáng Tạo Không Giới Hạn Trong Kinh Doanh",
+      "original_price": 96000,
+      "rating_average": 0,
+      "short_description": "Sáng Tạo Không Giới Hạn Trong Kinh Doanh “…Đôi khi, thành công phụ thuộc vào một cái gì đó bên trong mỗi chúng ta, không phải là kết quả của việc nhiều tiền bạc, khả năng hô hào hay bằng cấp…” Tác..."
+    },
+    {
+      "id": 5,
+      "category": 1,
+      "description": "<p>“Mọi lựa chọn đều giá trị. Mọi bước đi đều quan trọng. Cuộc sống vẫn diễn ra theo cách của nó, không phải theo cách của ta. Hãy kiên nhẫn. Tin tưởng. Hãy giống như người thợ cắt đá, đều đặn từng nhịp, ngày qua ngày. Cuối cùng, một nhát cắt duy nhất sẽ phá vỡ tảng đá và lộ ra viên kim cương. Người tràn đầy nhiệt huyết và tận tâm với việc mình làm không bao giờ bị chối bỏ. Sự thật là thế.”</p>\n<p>Bằng những lời chia sẻ thật ngắn gọn, dễ hiểu về những trải nghiệm và suy ngẫm trong đời, Robin Sharma tiếp tục phong cách viết của ông từ cuốn sách Điều vĩ đại đời thường để mang đến cho độc giả những bài viết như lời tâm sự, vừa chân thành vừa sâu sắc.</p><p>Giá sản phẩm trên Tiki đã bao gồm thuế theo luật hiện hành. Bên cạnh đó, tuỳ vào loại sản phẩm, hình thức và địa chỉ giao hàng mà có thể phát sinh thêm chi phí khác như phí vận chuyển, phụ phí hàng cồng kềnh, thuế nhập khẩu (đối với đơn hàng giao từ nước ngoài có giá trị trên 1 triệu đồng).....</p>",
+      "images": [
+        "https://salt.tikicdn.com/ts/product/57/44/86/19de0644beef19b9b885d0942f7d6f25.jpg"
+      ],
+      "list_price": 75000,
+      "name": "Đời Ngắn Đừng Ngủ Dài (Tái Bản)",
+      "original_price": 75000,
+      "quantity_sold": {
+        "text": "Đã bán 1000+",
+        "value": 42844
+      },
+      "rating_average": 4.8,
+      "short_description": "“Mọi lựa chọn đều giá trị. Mọi bước đi đều quan trọng. Cuộc sống vẫn diễn ra theo cách của nó, không phải theo cách của ta. Hãy kiên nhẫn. Tin tưởng. Hãy giống như người thợ cắt đá, đều đặn từng nhịp,..."
+    },
+    {
+      "name": "Cây Cam Ngọt Của Tôi",
+      "description": "“Vị chua chát của cái nghèo hòa trộn với vị ngọt ngào khi khám phá ra những điều khiến cuộc đời này đáng số một tác phẩm kinh điển của Brazil.”- Booklist“Một cách nhìn cuộc sống gần như hoàn chỉnh t...",
+      "category": "6",
+      "short_description": "“Vị chua chát của cái nghèo hòa trộn với vị ngọt ngào khi khám phá ra những điều khiến cuộc đời này đáng số một tác phẩm kinh điển của Brazil.”- Booklist“Một cách nhìn cuộc sống gần như hoàn chỉnh t...",
+      "list_price": "108000",
+      "original_price": "108000",
+      "images": [
+        "https://salt.tikicdn.com/ts/product/5e/18/24/2a6154ba08df6ce6161c13f4303fa19e.jpg"
+      ],
+      "id": 6
+    },
+    {
+      "name": "Rừng Nauy (Tái Bản)",
+      "description": "Câu chuyện bắt đầu từ một chuyến bay trong ngày mưa ảm đạm, một người đàn ông 37 tuổi chợt nghe thấy bài hát gắn liền với hình ảnh người yêu cũ, thế là quá khứ ùa về xâm chiếm thực tại. Mười tám năm t...",
+      "category": 5,
+      "short_description": "Câu chuyện bắt đầu từ một chuyến bay trong ngày mưa ảm đạm, một người đàn ông 37 tuổi chợt nghe thấy bài hát gắn liền với hình ảnh người yêu cũ, thế là quá khứ ùa về xâm chiếm thực tại. Mười tám năm t...",
+      "list_price": "150000",
+      "original_price": "150000",
+      "images": [
+        "https://salt.tikicdn.com/ts/product/c9/e4/18/a9cfc425fa590c453f20307229804bb3.jpg"
+      ],
+      "id": 7
+    },
+    {
+      "name": "Nhà Giả Kim (Tái Bản 2020) sửa",
+      "description": "Sơ lược về tác phẩmTất cả những trải nghiệm trong chuyến phiêu du theo đuổi vận mệnh của mình đã giúp Santiago thấu hiểu được ý nghĩa sâu xa nhất của hạnh phúc, hòa hợp với vũ trụ và con người.Tiểu ...",
+      "category": "1",
+      "short_description": "Sơ lược về tác phẩmTất cả những trải nghiệm trong chuyến phiêu du theo đuổi vận mệnh của mình đã giúp Santiago thấu hiểu được ý nghĩa sâu xa nhất của hạnh phúc, hòa hợp với vũ trụ và con người.Tiểu ...",
+      "list_price": "790002",
+      "original_price": "790002",
+      "images": [
+        "https://salt.tikicdn.com/ts/product/45/3b/fc/aa81d0a534b45706ae1eee1e344e80d9.jpg"
+      ],
+      "id": 8
+    },
+    {
+      "name": "jjjjjjjjjjjjjjjjjjjjjjjjjjj2",
+      "description": "jjjjjjjjjjjjjjjjjjjjjjjj",
+      "category": "1",
+      "short_description": "jjjjjjjjjjjjjjjjjjjjjjjj",
+      "list_price": "777",
+      "original_price": "777",
+      "images": [
+        "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fhongbiencang.com%2Fimages%2Fnews%2F2018%2F06%2F14%2Fchf_11529009768.jpg&f=1&nofb=1&ipt=360a0d06e895a5d08f267c558da2983af4ac29ce840ec3559dd1b977c8fe43ec&ipo=images"
+      ],
+      "id": 20
+    },
+    {
+      "name": "kkkkkkkkkkkkkk",
+      "description": "kkkkkkkkkkkkkkkkkkkkkkkkk",
+      "category": "5",
+      "short_description": "kkkkkkkkkkkkkkkkkkkkkkkkk",
+      "list_price": "5555",
+      "original_price": "5555",
+      "images": [
+        "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F2.bp.blogspot.com%2F-sas1bTiQ83g%2FUE6sj6INuNI%2FAAAAAAAAA_Q%2FxCZ6uQxL7PA%2Fs1600%2Fanh%2B_girl_xinh_anh_gai_dep_trang1.jpg&f=1&nofb=1&ipt=818207c0f802347171ac4dfe05763cbebab6b7beddb086cc405863b93479abff&ipo=images"
+      ],
+      "id": 24
+    },
+    {
+      "name": "hihihiuuuyyuuy",
+      "category": "4",
+      "description": "22333313",
+      "short_description": "22333313",
+      "list_price": "12",
+      "original_price": "12",
+      "images": [
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.gy8_m13qDwE2iyvbEk9_WAHaJQ%26pid%3DApi&f=1&ipt=d79ed2fded040004a3decd3e37d33bdf932aef721224f28705efe3988daaf818&ipo=images"
+      ],
+      "id": 31
+    },
+    {
+      "name": "aaaaaaaaaaa",
+      "category": "9",
+      "description": "aaaaaaaaaaaa",
+      "short_description": "aaaaaaaaaaaa",
+      "list_price": "1",
+      "original_price": "1",
+      "images": [
+        "https://cdn.nguyenkimmall.com/images/detailed/555/may-anh-cho-nguoi-moi.jpg"
+      ],
+      "id": 32
+    },
+    {
+      "name": "poshssss",
+      "category": "7",
+      "description": "eeeeeeeeeeeeeeeeee",
+      "short_description": "eeeeeeeeeeeeeeeeee",
+      "list_price": "12",
+      "original_price": "12",
+      "images": [
+        "https://hanselmanblogcontent.azureedge.net/Windows-Live-Writer/Creating-the-Ultimate-PowerShell-prompt_11CD9/image_9f793bcd-61f2-424b-845b-46b63b2f37eb.png"
+      ],
+      "id": 33
+    },
+    {
+      "name": "ccccccccccccccc",
+      "category": "7",
+      "description": "3433333",
+      "short_description": "3433333",
+      "list_price": "1212121212",
+      "original_price": "1212121212",
+      "images": [
+        "https://bs-uploads.toptal.io/blackfish-uploads/components/seo/content/og_image_file/og_image/1275958/top-18-most-common-angularjs-developer-mistakes-41f9ad303a51db70e4a5204e101e7414.png"
+      ],
+      "id": 34
+    },
+    {
+      "name": "gggggggggggggggg222222222",
+      "description": "ttttttttttt",
+      "category": "1",
+      "short_description": "ttttttttttt",
+      "list_price": "122",
+      "original_price": "122",
+      "images": [
+        "https://images.unsplash.com/photo-1685438531044-ef75606db89d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
+      ],
+      "id": 35
+    }
+  ]
+}
